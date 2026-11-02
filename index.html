@@ -3,13 +3,22 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Tanishq Sharma — Graphic Designer & Founder of Wall Signature</title>
+  <title>Tanishq Sharma — Graphic Designer &amp; Visual Creative</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="cinema-intro-active">
+
+  <!-- Cinematic Welcome Intro Overlay -->
+  <div id="cinema-intro" class="cinema-intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome to the portfolio">
+    <div class="cinema-intro-inner">
+      <div class="cinema-intro-line" id="ci-welcome">WELCOME</div>
+      <div class="cinema-intro-sub" id="ci-name">TANISHQ SHARMA</div>
+      <div class="cinema-intro-sub ci-role" id="ci-role">GRAPHIC DESIGNER &amp; VISUAL CREATIVE</div>
+    </div>
+  </div>
 
   <!-- Loading Screen -->
   <div id="loader" class="loader-overlay">
@@ -52,13 +61,14 @@
     <nav class="nav-pill">
       <a href="#about" class="nav-item">About Me</a>
       <a href="creativity.html" class="nav-item">Creativity &amp; Gallery</a>
-      <a href="#wall-signature" class="nav-item">Wall Signature</a>
       <a href="#skills" class="nav-item">Skills</a>
       <a href="#testimonials" class="nav-item">Testimonials</a>
       <a href="contact.html" class="nav-item">Contact</a>
     </nav>
 
     <div class="nav-cta">
+      <!-- Wall Signature brand CTA -->
+      <a href="wall-signature.html" class="btn-wall-signature-cta">WALL SIGNATURE &rarr;</a>
       <!-- Nav CTA button linking to dedicated contact page -->
       <a href="contact.html" class="btn-primary-white">Get In Touch</a>
     </div>
@@ -85,7 +95,7 @@
           </h1>
 
           <p class="hero-subtitle hero-subtitle-compact">
-            Creative and detail-oriented Graphic Designer with a strong passion for visual storytelling, branding, and innovative design. Founder of luxury home décor brand <strong>WALL SIGNATURE</strong>.
+            Creative and detail-oriented Graphic Designer with a strong passion for visual storytelling, branding, and innovative design.
           </p>
 
           <div class="hero-cta-group">
@@ -148,14 +158,14 @@
         <div class="marquee-track-container">
           <div class="marquee-content-track">
             
-            <!-- Project Item 1: Wall Signature 3D CNC -->
-            <div class="marquee-card" onclick="openProjectModal('wall-signature-3d')">
+            <!-- Project Item 1: CAD Designs -->
+            <div class="marquee-card" onclick="openProjectModal('cad-designs')">
               <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
-                <span class="card-badge-cat">3D CNC &bull; Wood</span>
+                <span class="card-badge-cat">CAD &bull; Technical</span>
               </div>
               <div class="card-meta">
-                <h4 class="card-title">Wall Signature 3D Art</h4>
-                <p class="card-desc">Custom 3D wooden carvings &amp; resin interior wall décor.</p>
+                <h4 class="card-title">CAD Designs &amp; 3D Art</h4>
+                <p class="card-desc">Technical design studies and 3D concepts created with precision.</p>
               </div>
             </div>
 
@@ -170,14 +180,14 @@
               </div>
             </div>
 
-            <!-- Project Item 3: Multi-Layered Laser-Cut MDF -->
-            <div class="marquee-card" onclick="openProjectModal('laser-cut-mdf')">
+            <!-- Project Item 3: Poster & Visual Design -->
+            <div class="marquee-card" onclick="openProjectModal('visual-designs')">
               <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
-                <span class="card-badge-cat">Laser Craft</span>
+                <span class="card-badge-cat">Poster &bull; Visual</span>
               </div>
               <div class="card-meta">
-                <h4 class="card-title">Multi-Layer Laser Sculptures</h4>
-                <p class="card-desc">Layered architectural MDF &amp; high-gloss resin artworks.</p>
+                <h4 class="card-title">Poster &amp; Visual Design</h4>
+                <p class="card-desc">Editorial layouts, promotional graphics, and striking visual concepts.</p>
               </div>
             </div>
 
@@ -215,13 +225,13 @@
             </div>
 
             <!-- DUPLICATE SET FOR SEAMLESS 100% INFINITE LOOP -->
-            <div class="marquee-card" onclick="openProjectModal('wall-signature-3d')">
+            <div class="marquee-card" onclick="openProjectModal('cad-designs')">
               <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
-                <span class="card-badge-cat">3D CNC &bull; Wood</span>
+                <span class="card-badge-cat">CAD &bull; Technical</span>
               </div>
               <div class="card-meta">
-                <h4 class="card-title">Wall Signature 3D Art</h4>
-                <p class="card-desc">Custom 3D wooden carvings &amp; resin interior wall décor.</p>
+                <h4 class="card-title">CAD Designs &amp; 3D Art</h4>
+                <p class="card-desc">Technical design studies and 3D concepts created with precision.</p>
               </div>
             </div>
 
@@ -235,13 +245,13 @@
               </div>
             </div>
 
-            <div class="marquee-card" onclick="openProjectModal('laser-cut-mdf')">
+            <div class="marquee-card" onclick="openProjectModal('visual-designs')">
               <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
-                <span class="card-badge-cat">Laser Craft</span>
+                <span class="card-badge-cat">Poster &bull; Visual</span>
               </div>
               <div class="card-meta">
-                <h4 class="card-title">Multi-Layer Laser Sculptures</h4>
-                <p class="card-desc">Layered architectural MDF &amp; high-gloss resin artworks.</p>
+                <h4 class="card-title">Poster &amp; Visual Design</h4>
+                <p class="card-desc">Editorial layouts, promotional graphics, and striking visual concepts.</p>
               </div>
             </div>
 
@@ -286,8 +296,8 @@
         <div class="glass-stats-card">
           <div class="stats-watermark">TS</div>
           <div class="stat-col">
-            <span class="stat-val">WALL SIGNATURE</span>
-            <span class="stat-desc">Founder &amp; Creative Designer</span>
+            <span class="stat-val">GRAPHIC DESIGNER</span>
+            <span class="stat-desc">Visual Creative</span>
           </div>
           <div class="stats-divider"></div>
           <div class="stat-col">
@@ -343,16 +353,20 @@
           Design Artworks
         </h2>
         <p class="creativity-subtitle">
-          From custom 3D CNC wooden carvings and luxury packaging at Wall Signature to brand identities and digital campaigns.
+          From brand identities and CAD designs to posters, social issues, packaging, magazine, photography and 3D renders.
         </p>
 
         <!-- Project Filter Tabs & Dedicated Page Button -->
         <div class="gallery-filter-tabs">
           <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
-          <button class="filter-btn" onclick="filterProjects('wall-signature', this)">Wall Signature (3D Art)</button>
-          <button class="filter-btn" onclick="filterProjects('branding', this)">Brand Identity</button>
-          <button class="filter-btn" onclick="filterProjects('packaging', this)">Packaging &amp; Print</button>
-          <button class="filter-btn" onclick="filterProjects('digital', this)">Digital Creatives</button>
+          <button class="filter-btn" onclick="filterProjects('brand-identity', this)">Brand Identity / Logo</button>
+          <button class="filter-btn" onclick="filterProjects('cad-designs', this)">CAD Designs</button>
+          <button class="filter-btn" onclick="filterProjects('posters', this)">Posters / Visual Designs</button>
+          <button class="filter-btn" onclick="filterProjects('social-issues', this)">Social Issues</button>
+          <button class="filter-btn" onclick="filterProjects('packaging', this)">Packaging Design</button>
+          <button class="filter-btn" onclick="filterProjects('magazine', this)">Magazine Design</button>
+          <button class="filter-btn" onclick="filterProjects('photography', this)">Photography</button>
+          <button class="filter-btn" onclick="filterProjects('3d-models', this)">3D Models &amp; Renders</button>
           <a href="creativity.html" class="filter-btn" style="background:var(--accent-orange); color:#fff; text-decoration:none; border-color:transparent;">Open Full Detailed Gallery &rarr;</a>
         </div>
       </div>
@@ -361,31 +375,31 @@
       <div class="creativity-grid" id="projects-grid">
         
         <!-- Item 1 -->
-        <div class="gallery-card" data-category="wall-signature" onclick="openProjectModal('wall-signature-3d')">
+        <div class="gallery-card" data-category="cad-designs" onclick="openProjectModal('cad-designs')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
-            <span class="gallery-category-pill">3D CNC &bull; Wood</span>
+            <span class="gallery-category-pill">CAD &bull; Technical</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">WALL SIGNATURE</span>
-            <h3 class="gallery-card-title">Custom 3D CNC Wooden Carvings</h3>
-            <p class="gallery-card-summary">Luxury architectural wall panels crafted with precision CNC routers and hand-finished wood stains.</p>
+            <span class="gallery-card-tag">CAD DESIGN</span>
+            <h3 class="gallery-card-title">CAD Designs</h3>
+            <p class="gallery-card-summary">Precision technical CAD designs and engineering-grade drawings crafted with SketchUp and CorelDraw.</p>
             <div class="gallery-tools-row">
               <span class="badge-tool">SketchUp</span>
               <span class="badge-tool">Illustrator</span>
-              <span class="badge-tool">CNC Wood</span>
+              <span class="badge-tool">CorelDraw</span>
             </div>
           </div>
         </div>
 
         <!-- Item 2 -->
-        <div class="gallery-card" data-category="packaging" onclick="openProjectModal('luxury-packaging')">
+        <div class="gallery-card" data-category="brand-identity" onclick="openProjectModal('luxury-packaging')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
-            <span class="gallery-category-pill">Packaging &bull; Print</span>
+            <span class="gallery-category-pill">Branding &bull; Logo</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">PRINT &amp; PRODUCTION</span>
-            <h3 class="gallery-card-title">Large-Format Luxury Packaging</h3>
-            <p class="gallery-card-summary">High-end rigid packaging boxes, embossed logos, foil stamping, and complete corporate stationery sets.</p>
+            <span class="gallery-card-tag">BRAND IDENTITY</span>
+            <h3 class="gallery-card-title">Brand Identity / Logo</h3>
+            <p class="gallery-card-summary">Comprehensive brand identity systems — custom logomarks, color palettes, typography hierarchy and corporate assets.</p>
             <div class="gallery-tools-row">
               <span class="badge-tool">Illustrator</span>
               <span class="badge-tool">Photoshop</span>
@@ -395,69 +409,69 @@
         </div>
 
         <!-- Item 3 -->
-        <div class="gallery-card" data-category="wall-signature" onclick="openProjectModal('laser-cut-mdf')">
+        <div class="gallery-card" data-category="posters" onclick="openProjectModal('visual-designs')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
-            <span class="gallery-category-pill">Resin &amp; MDF</span>
+            <span class="gallery-category-pill">Poster &bull; Visual</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">WALL SIGNATURE</span>
-            <h3 class="gallery-card-title">Multi-Layered Laser-Cut MDF &amp; Resin Art</h3>
-            <p class="gallery-card-summary">Multi-tier layered parametric wall sculptures infused with custom epoxy pigments and mirror accents.</p>
+            <span class="gallery-card-tag">VISUAL DESIGN</span>
+            <h3 class="gallery-card-title">Posters / Visual Designs</h3>
+            <p class="gallery-card-summary">Bold poster designs and striking visual creatives crafted for impact — from event posters to editorial layouts.</p>
             <div class="gallery-tools-row">
-              <span class="badge-tool">CorelDraw</span>
-              <span class="badge-tool">Laser Cutting</span>
-              <span class="badge-tool">Resin Art</span>
+              <span class="badge-tool">Photoshop</span>
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">InDesign</span>
             </div>
           </div>
         </div>
 
         <!-- Item 4 -->
-        <div class="gallery-card" data-category="branding" onclick="openProjectModal('brand-identity')">
+        <div class="gallery-card" data-category="social-issues" onclick="openProjectModal('brand-identity')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
-            <span class="gallery-category-pill">Branding</span>
+            <span class="gallery-category-pill">Social &bull; Awareness</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">IDENTITY DESIGN</span>
-            <h3 class="gallery-card-title">Complete Brand Identity &amp; Guidelines</h3>
-            <p class="gallery-card-summary">Comprehensive vector identity, custom logomarks, typography pairing, and digital brand style books.</p>
+            <span class="gallery-card-tag">SOCIAL ISSUES</span>
+            <h3 class="gallery-card-title">Social Issues</h3>
+            <p class="gallery-card-summary">Powerful awareness campaigns and advocacy visuals designed to communicate critical social messages effectively.</p>
             <div class="gallery-tools-row">
               <span class="badge-tool">Illustrator</span>
               <span class="badge-tool">InDesign</span>
-              <span class="badge-tool">Vector</span>
+              <span class="badge-tool">Photoshop</span>
             </div>
           </div>
         </div>
 
         <!-- Item 5 -->
-        <div class="gallery-card" data-category="digital" onclick="openProjectModal('social-campaigns')">
+        <div class="gallery-card" data-category="packaging" onclick="openProjectModal('social-campaigns')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
-            <span class="gallery-category-pill">Social Creatives</span>
+            <span class="gallery-category-pill">Packaging &bull; Print</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">DIGITAL MARKETING</span>
-            <h3 class="gallery-card-title">Cinematic Social Media Promotional Campaigns</h3>
-            <p class="gallery-card-summary">High-engagement promotional creatives, story ads, and visual product mockups tailored for conversion.</p>
+            <span class="gallery-card-tag">PACKAGING DESIGN</span>
+            <h3 class="gallery-card-title">Packaging Design</h3>
+            <p class="gallery-card-summary">Premium packaging solutions — rigid boxes, die-cut structures, foil stamping and luxury unboxing experiences.</p>
             <div class="gallery-tools-row">
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">CorelDraw</span>
               <span class="badge-tool">Photoshop</span>
-              <span class="badge-tool">Firefly</span>
-              <span class="badge-tool">Canva</span>
             </div>
           </div>
         </div>
 
         <!-- Item 6 -->
-        <div class="gallery-card" data-category="wall-signature" onclick="openProjectModal('sketchup-3d')">
+        <div class="gallery-card" data-category="photography" onclick="openProjectModal('sketchup-3d')">
           <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
-            <span class="gallery-category-pill">3D Concepts</span>
+            <span class="gallery-category-pill">Photography</span>
           </div>
           <div class="gallery-card-info">
-            <span class="gallery-card-tag">SPATIAL VISUALIZATION</span>
-            <h3 class="gallery-card-title">Product Design &amp; Architectural Modeling</h3>
-            <p class="gallery-card-summary">Spatial environment staging and realistic 3D renderings for interior luxury wall installations.</p>
+            <span class="gallery-card-tag">PHOTOGRAPHY</span>
+            <h3 class="gallery-card-title">Photography</h3>
+            <p class="gallery-card-summary">Creative photography — product shoots, editorial captures, and visual storytelling through the lens.</p>
             <div class="gallery-tools-row">
-              <span class="badge-tool">SketchUp</span>
               <span class="badge-tool">Photoshop</span>
-              <span class="badge-tool">V-Ray Concept</span>
+              <span class="badge-tool">Lightroom</span>
+              <span class="badge-tool">Firefly</span>
             </div>
           </div>
         </div>
@@ -505,15 +519,15 @@
       </div>
 
       <div class="minds-layout-grid">
-        <!-- Left: Wall Signature Spotlight Card -->
+        <!-- Left: Design Visual Card -->
         <div class="minds-portrait-card">
           <div class="portrait-img-wrapper">
             <img src="video_frames_24fps/frame_000051.jpg" alt="Tanishq Sharma Design Visual" class="portrait-photo">
             <div class="portrait-orange-overlay"></div>
             <div class="portrait-card-badge">
-              <span class="spotlight-tag">FEATURED BRAND</span>
-              <h3 class="spotlight-title">WALL SIGNATURE</h3>
-              <p class="spotlight-sub">Luxury Indian Wall Art &amp; 3D CNC Carvings</p>
+              <span class="spotlight-tag">GRAPHIC DESIGNER</span>
+              <h3 class="spotlight-title">TANISHQ SHARMA</h3>
+              <p class="spotlight-sub">Visual Creative &amp; Brand Identity Specialist</p>
             </div>
           </div>
         </div>
@@ -543,22 +557,7 @@
           </div>
 
           <div class="dual-cards-grid">
-            <!-- Card 1: Wall Signature Experience -->
-            <div class="sub-glass-card card-partners" id="wall-signature">
-              <div class="card-partner-header">
-                <span class="exp-role">Founder &amp; Creative Designer</span>
-                <span class="exp-company">WALL SIGNATURE</span>
-                <span class="exp-dates">Sept 2026 &mdash; Present</span>
-              </div>
-              <ul class="exp-points">
-                <li>Launched luxury Indian wall art &amp; interior décor brand specializing in custom 3D CNC wooden carvings &amp; laser-cut MDF/resin art.</li>
-                <li>Developed complete brand identity systems, corporate stationery, and luxury packaging.</li>
-                <li>End-to-end product design using Illustrator &amp; SketchUp with social media campaigns.</li>
-              </ul>
-              <a href="contact.html" class="btn-primary-orange btn-full">Contact Founder</a>
-            </div>
-
-            <!-- Card 2: Design Intern & Certifications -->
+            <!-- Design Intern & Certifications -->
             <div class="sub-glass-card card-fact">
               <div class="fact-top-row">
                 <span class="fact-tag">Professional Internship</span>
@@ -624,13 +623,13 @@
             </svg>
           </div>
           <div class="bento-stat-body">
-            <span class="bento-number">3D &amp; CNC</span>
-            <span class="bento-stat-label">Product Fabrication</span>
+            <span class="bento-number">3D &amp; SPATIAL</span>
+            <span class="bento-stat-label">Product Visualization</span>
             <div class="skill-pills">
               <span class="pill-skill">SketchUp</span>
               <span class="pill-skill">CorelDraw</span>
             </div>
-            <p class="bento-stat-desc">Custom 3D CNC wooden carvings, multi-layered laser-cut MDF/resin artworks, and large format luxury packaging.</p>
+            <p class="bento-stat-desc">3D modeling, campaign visuals, brand assets, packaging, and spatial concepts.</p>
           </div>
         </div>
 
@@ -684,22 +683,6 @@
 
       <div class="testimonials-grid">
         
-        <!-- Review 1 -->
-        <div class="testimonial-card">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-quote">
-            &ldquo;Tanishq's 3D CNC wooden panels for Wall Signature completely elevated our luxury penthouse project in Gurgaon. The depth, multi-tier relief carvings, and fine wood finish are truly world-class.&rdquo;
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background-image: url('video_frames_24fps/frame_000051.jpg');"></div>
-            <div class="author-meta">
-              <h4 class="author-name">Aarav Singhania</h4>
-              <span class="author-role">Principal Interior Architect, Studio Vista</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
         <div class="testimonial-card">
           <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
           <p class="testimonial-quote">
@@ -710,21 +693,6 @@
             <div class="author-meta">
               <h4 class="author-name">Meera Kapoor</h4>
               <span class="author-role">Creative Director, Aurum Living</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="testimonial-card">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-          <p class="testimonial-quote">
-            &ldquo;The multi-layered laser-cut resin wall sculpture from Wall Signature is the centerpiece of our villa in Delhi. The craftsmanship and light reflections in person are breathtaking.&rdquo;
-          </p>
-          <div class="testimonial-author">
-            <div class="author-avatar" style="background-image: url('video_frames_24fps/frame_000150.jpg');"></div>
-            <div class="author-meta">
-              <h4 class="author-name">Rohan Verma</h4>
-              <span class="author-role">Private Art Collector, New Delhi</span>
             </div>
           </div>
         </div>
@@ -759,7 +727,7 @@
           <span class="brand-name neon-brand">TANISHQ SHARMA</span>
         </a>
         <p class="footer-bio">
-          Graphic Designer &amp; Founder of Wall Signature. Turning ideas into meaningful visual experiences through branding, 3D CNC art, and innovative product design.
+          Creative Graphic Designer turning ideas into meaningful visual experiences through branding, identity design, and innovative visual storytelling.
         </p>
         <div class="footer-status-pill">
           <span class="badge-dot-green"></span>
@@ -774,7 +742,6 @@
           <li><a href="#hero">Home</a></li>
           <li><a href="#about">About Me</a></li>
           <li><a href="creativity.html">Creativity &amp; Gallery</a></li>
-          <li><a href="#wall-signature">Wall Signature</a></li>
           <li><a href="#skills">Technical Skills</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
           <li><a href="contact.html">Hire Me</a></li>
@@ -819,7 +786,7 @@
     <!-- Bottom Copyright & Back to Top Strip -->
     <div class="footer-bottom-strip">
       <p class="copyright-text">
-        &copy; 2026 Tanishq Sharma &bull; Founder of Wall Signature. All Rights Reserved.
+        &copy; 2026 Tanishq Sharma. All Rights Reserved.
       </p>
       <a href="#hero" class="btn-back-top" aria-label="Back to Top">
         <span>Back to Top</span>
@@ -855,7 +822,7 @@
           </div>
           <div class="modal-detail-box">
             <span class="detail-box-label">Brand / Client</span>
-            <span class="detail-box-val" id="modal-client">Wall Signature</span>
+            <span class="detail-box-val" id="modal-client">Independent Client</span>
           </div>
         </div>
 
@@ -879,7 +846,7 @@
         <span class="modal-tag">💡 CREATIVE SUGGESTION BOX</span>
         <h2 class="suggestion-title">Suggest a Project to Tanishq</h2>
         <p class="suggestion-subtitle">
-          Have an inspired idea for custom 3D CNC wall art, a brand concept, or packaging innovation? Share your recommendation with me!
+          Have an inspired idea for a brand identity, packaging concept, or visual campaign? Share your recommendation with me.
         </p>
       </div>
 
@@ -904,12 +871,10 @@
           <div class="form-group">
             <label class="form-label" for="sugg-category">Project Category</label>
             <select id="sugg-category" class="form-select" required>
-              <option value="3D CNC Wall Art">Wall Signature Custom 3D CNC Wooden Art</option>
-              <option value="Multi-Layer Resin Art">Multi-Layered Laser-Cut MDF &amp; Resin Art</option>
               <option value="Brand Identity">New Brand Identity / Logo System</option>
-              <option value="Luxury Packaging">Luxury Packaging &amp; Print Stationery</option>
-              <option value="Social Media Creative">Social Media Campaign / Visual Concept</option>
-              <option value="Interior Installation">Commercial / Interior Architecture Collaboration</option>
+              <option value="Packaging Design">Packaging &amp; Print Design</option>
+              <option value="Social Media Creative">Social Media &amp; Visual Campaigns</option>
+              <option value="3D Visualization">3D Design &amp; Visualization</option>
               <option value="Other Creative Concept">Other Creative Idea</option>
             </select>
           </div>

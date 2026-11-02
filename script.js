@@ -75,7 +75,15 @@
   }
 
   // Dismiss loader with sleek transition
-  function dismissLoader() {
+  function dismissLoader(immediate = false) {
+    if (immediate) {
+      isLoaderDismissed = true;
+      if (loader && loader.parentNode) {
+        loader.parentNode.removeChild(loader);
+      }
+      return;
+    }
+
     if (isLoaderDismissed) return;
     isLoaderDismissed = true;
     if (loader) {
@@ -86,6 +94,44 @@
         }
       }, 850);
     }
+  }
+
+  function startCinematicIntro() {
+    const intro = document.getElementById('cinema-intro');
+    if (!intro) return;
+
+    const backgroundElements = Array.from(document.body.children)
+      .filter((element) => element !== intro)
+      .map((element) => ({ element, wasInert: element.inert }));
+    backgroundElements.forEach(({ element }) => {
+      element.inert = true;
+    });
+
+    let isFinished = false;
+    let fallbackTimer;
+    const finishIntro = () => {
+      if (isFinished) return;
+      isFinished = true;
+      window.clearTimeout(fallbackTimer);
+      backgroundElements.forEach(({ element, wasInert }) => {
+        element.inert = wasInert;
+      });
+      document.body.classList.remove('cinema-intro-active');
+      intro.remove();
+      dismissLoader(true);
+    };
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      finishIntro();
+      return;
+    }
+
+    intro.addEventListener('animationend', (event) => {
+      if (event.target === intro && event.animationName === 'cinema-fade-out') {
+        finishIntro();
+      }
+    });
+    fallbackTimer = window.setTimeout(finishIntro, 4500);
   }
 
   // Preload pipeline with concurrency pool
@@ -272,34 +318,34 @@
   // CREATIVE PROJECTS DATA & MODAL SYSTEM
   // ==========================================================================
   const projectsData = {
-    'wall-signature-3d': {
-      title: 'cad designs',
-      tag: 'WALL SIGNATURE SPOTLIGHT',
-      category: 'Luxury Interior Decor & 3D Wood Art',
-      desc: 'Conceptualized, designed, and manufactured bespoke 3D CNC wooden wall panels and interior art sculptures. Featuring custom relief toolpaths in SketchUp, multi-tier wood stains, and luxury residential installations across India.',
-      tools: 'SketchUp, Illustrator, CNC Routers, Wood Craft',
-      role: 'Founder & Lead Designer',
-      client: 'Wall Signature',
+    'cad-designs': {
+      title: 'CAD Designs & 3D Concepts',
+      tag: 'TECHNICAL DESIGN',
+      category: 'CAD Design & Spatial Visualization',
+      desc: 'Technical design studies, precise CAD drawings, and 3D concepts developed with a focus on form, proportion, and clear visual communication.',
+      tools: 'SketchUp, Illustrator, CorelDraw',
+      role: 'CAD & 3D Designer',
+      client: 'Independent & Studio Clients',
       image: 'video_frames_24fps/frame_000051.jpg'
     },
     'luxury-packaging': {
       title: 'Large-Format Luxury Packaging Systems',
       tag: 'PACKAGING & PRINT',
       category: 'Rigid Boxes, Foil Stamping & Corporate Collateral',
-      desc: 'Engineered premium packaging structures for luxury home decor artworks. Features heavy-duty rigid box fabrication, magnetic enclosure flaps, custom metallic gold foil stamping, and matching corporate stationery suites.',
+      desc: 'Engineered premium packaging structures for product collections and client brands, including rigid boxes, magnetic enclosures, metallic foil finishes, and coordinated stationery.',
       tools: 'Adobe Illustrator, Photoshop, CorelDraw',
       role: 'Packaging & Brand Designer',
-      client: 'Wall Signature & Corporate Clients',
+      client: 'Independent & Corporate Clients',
       image: 'video_frames_24fps/frame_000100.jpg'
     },
-    'laser-cut-mdf': {
-      title: 'Multi-Layered Laser-Cut MDF & Resin Sculptures',
-      tag: 'FABRICATION & RESIN',
-      category: 'Parametric Multi-Tier Wall Art',
-      desc: 'High-precision laser-cut multi-layer MDF mandalas, architectural patterns, and epoxy resin inlays with UV-stable pigments and mirror accents. Bridging digital vector design with hands-on artisan craft.',
-      tools: 'CorelDraw, Illustrator, Laser CNC, Resin Art',
-      role: 'Creative Designer & Art Director',
-      client: 'Wall Signature Interior Collection',
+    'visual-designs': {
+      title: 'Poster & Visual Design',
+      tag: 'VISUAL DESIGN',
+      category: 'Posters, Editorial Layouts & Campaign Graphics',
+      desc: 'Bold graphic compositions, editorial layouts, and promotional visuals designed to communicate ideas clearly across print and digital formats.',
+      tools: 'Photoshop, Illustrator, InDesign',
+      role: 'Graphic Designer',
+      client: 'Independent & Studio Clients',
       image: 'video_frames_24fps/frame_000150.jpg'
     },
     'brand-identity': {
@@ -309,7 +355,7 @@
       desc: 'Full-spectrum corporate branding: vector logomark creation, geometric typography pairing, color psychology palettes, stationery layouts, and brand asset guidelines designed for digital and print execution.',
       tools: 'Adobe Illustrator, Photoshop, InDesign',
       role: 'Brand Identity Designer',
-      client: 'Wall Signature & Independent Brands',
+      client: 'Independent Brands',
       image: 'video_frames_24fps/frame_000180.jpg'
     },
     'social-campaigns': {
@@ -319,14 +365,14 @@
       desc: 'High-converting social media creatives, Instagram feed aesthetics, cinematic video reel thumbnails, and promotional product campaigns created using Photoshop, Firefly, and Canva for luxury brand growth.',
       tools: 'Photoshop, Adobe Firefly, Canva',
       role: 'Digital Art Director',
-      client: 'Wall Signature Social Media',
+      client: 'Independent Brands',
       image: 'video_frames_24fps/frame_000200.jpg'
     },
     'sketchup-3d': {
       title: 'Product 3D Concepts & Architectural Spatial Design',
       tag: '3D MODELING',
       category: 'Spatial Visualization & Product Renderings',
-      desc: 'Photorealistic 3D spatial staging and interior architecture renders using SketchUp. Enables clients to visualize custom CNC wall art installations within their living rooms, executive suites, and luxury villas before fabrication.',
+      desc: 'Photorealistic 3D spatial staging and interior architecture concepts created in SketchUp, helping clients visualize design ideas for residential, retail, and hospitality spaces.',
       tools: 'SketchUp, Photoshop, CorelDraw',
       role: '3D Spatial Designer',
       client: 'Architects & Private Collectors',
@@ -447,6 +493,8 @@
 
   // Initialize
   function init() {
+    startCinematicIntro();
+
     if (canvas) {
       updateScrollTarget();
       currentProgress = targetProgress;
