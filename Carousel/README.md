@@ -1,0 +1,1 @@
+Add showcase images to this folder or to nested project folders. Supported browser image formats are discovered automatically when you run `node generate-portfolio-manifest.js` from the website project directory.

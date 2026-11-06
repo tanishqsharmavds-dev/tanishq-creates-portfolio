@@ -29,8 +29,8 @@
       width: 100%;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(8, 8, 12, 0.7);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       position: sticky;
       top: 0;
       z-index: 100;
@@ -251,7 +251,7 @@
         </svg>
         Back to Home
       </a>
-      <a href="contact.html" class="btn-primary-white">Hire Me</a>
+      <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-white">Hire Me</a>
     </div>
   </header>
 
@@ -266,9 +266,14 @@
       Executed With Precision.
     </h1>
     <p class="creativity-hero-desc">
-      Explore the comprehensive design catalog of Tanishq Sharma. From precision CAD designs and bold poster work to brand identity, social issues, packaging, photography, and 3D renders.
+      Browse every project discovered in the portfolio category folders. New categories and project folders appear here after the portfolio manifest is regenerated.
     </p>
   </div>
+
+  <div class="gallery-filter-tabs portfolio-page-filters" id="portfolio-category-filters" aria-label="Browse project categories">
+    <button class="filter-btn active" type="button" data-filter="all">All Categories</button>
+  </div>
+  <div id="portfolio-categories" aria-live="polite"></div>
 
   <!-- SECTION 1: CAD DESIGNS -->
   <section class="section-block">
@@ -526,7 +531,7 @@
         <p class="cta-sub-muted">Whether it's a bespoke 3D CNC wall piece, branding overhaul, or custom packaging, let's create it together.</p>
       </div>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="contact.html" class="btn-primary-orange">Hire Tanishq</a>
+        <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-orange">Hire Tanishq</a>
         <a href="index.html" class="btn-secondary-close">Return to Main Site</a>
       </div>
     </div>
@@ -540,9 +545,11 @@
         <span class="modal-tag" id="modal-tag">PROJECT SPOTLIGHT</span>
       </div>
       <div class="modal-body-content">
+        <button type="button" class="modal-back-btn" id="modal-back-btn" onclick="closeProjectModal()" hidden></button>
         <h2 class="modal-title" id="modal-title">Project Title</h2>
         <span class="modal-category" id="modal-cat">Category</span>
         <p class="modal-description" id="modal-desc">Detailed project description goes here.</p>
+        <div class="modal-media-gallery" id="modal-media-gallery" aria-label="Project media"></div>
         
         <div class="modal-details-grid">
           <div class="modal-detail-box">
@@ -567,6 +574,7 @@
     </div>
   </div>
 
+  <script src="portfolio-manifest.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

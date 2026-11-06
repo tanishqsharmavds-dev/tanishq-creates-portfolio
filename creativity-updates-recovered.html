@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Creativity &amp; Projects Gallery — Tanishq Sharma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Dedicated Creativity Page Styles */
+    .creativity-page-body {
+      background-color: #050508;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(255, 85, 0, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 90% 40%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
+        radial-gradient(circle at 50% 85%, rgba(255, 170, 0, 0.08) 0%, transparent 55%);
+      min-height: 100vh;
+      color: #ffffff;
+      padding-bottom: 80px;
+    }
+
+    .creativity-navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 48px;
+      width: 100%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(8, 8, 12, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .btn-nav-action {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .btn-nav-action:hover {
+      background: rgba(255, 255, 255, 0.16);
+      transform: translateX(-3px);
+    }
+
+    .creativity-hero {
+      max-width: 1240px;
+      margin: 60px auto 40px;
+      padding: 0 32px;
+      text-align: left;
+    }
+
+    .creativity-hero-title {
+      font-size: clamp(38px, 4.5vw, 68px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin: 16px 0;
+      text-shadow: var(--shadow-text-heavy);
+    }
+
+    .creativity-hero-desc {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #e2e2f0;
+      max-width: 720px;
+      text-shadow: var(--shadow-text-med);
+    }
+
+    /* Section Wise Showcase */
+    .section-block {
+      max-width: 1240px;
+      margin: 70px auto;
+      padding: 0 32px;
+    }
+
+    .section-block-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .block-header-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .block-num-tag {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent-amber);
+    }
+
+    .block-title {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      text-shadow: var(--shadow-text-med);
+    }
+
+    .block-sub {
+      font-size: 14px;
+      color: #b0b0c8;
+      text-shadow: var(--shadow-text-sm);
+    }
+
+    .block-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .detail-card {
+      background: rgba(14, 14, 22, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+    }
+
+    .detail-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--accent-amber);
+      box-shadow: 0 16px 36px rgba(255, 120, 0, 0.3);
+    }
+
+    .detail-card-media {
+      width: 100%;
+      height: 220px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .card-corner-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-size: 10px;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.75);
+      color: var(--accent-amber);
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 170, 0, 0.4);
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .detail-card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .detail-item-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+      text-shadow: var(--shadow-text-sm);
+    }
+
+    .detail-item-desc {
+      font-size: 13px;
+      color: #dcdce8;
+      line-height: 1.55;
+      margin-bottom: 18px;
+      flex-grow: 1;
+    }
+
+    .detail-tools-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .badge-pill-tool {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 3px 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 4px;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    @media (max-width: 1024px) {
+      .block-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .creativity-navbar { padding: 16px 20px; }
+      .block-grid { grid-template-columns: 1fr; }
+      .creativity-hero { padding: 0 20px; margin-top: 36px; }
+      .section-block { padding: 0 20px; margin: 48px auto; }
+    }
+  </style>
+</head>
+<body class="creativity-page-body">
+
+  <!-- Header -->
+  <header class="creativity-navbar">
+    <a href="index.html" class="brand-logo">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L15 8L21 9L16.5 13.5L18 20L12 16.5L6 20L7.5 13.5L3 9L9 8L12 2Z" fill="url(#brand-grad-cr)" />
+          <defs>
+            <linearGradient id="brand-grad-cr" x1="3" y1="2" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ff4500" />
+              <stop offset="0.5" stop-color="#ff8800" />
+              <stop offset="1" stop-color="#ffb700" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="brand-name neon-brand">TANISHQ SHARMA</span>
+    </a>
+
+    <div style="display:flex; gap:12px; align-items:center;">
+      <a href="index.html" class="btn-nav-action">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back to Home
+      </a>
+      <a href="contact.html" class="btn-primary-white">Hire Me</a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <div class="creativity-hero">
+    <div class="pill-badge-sub">
+      <span class="badge-dot-orange"></span>
+      <span>DETAILED PROJECT ARCHIVE &bull; SECTION-WISE</span>
+    </div>
+    <h1 class="creativity-hero-title">
+      Crafted With Passion.<br>
+      Executed With Precision.
+    </h1>
+    <p class="creativity-hero-desc">
+      Explore the comprehensive design catalog of Tanishq Sharma. From precision CAD designs and bold poster work to brand identity, social issues, packaging, photography, and 3D renders.
+    </p>
+  </div>
+
+  <!-- SECTION 1: CAD DESIGNS -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">01 &bull; TECHNICAL DESIGN</span>
+        <h2 class="block-title">CAD Designs</h2>
+        <p class="block-sub">Precision technical CAD drawings, SketchUp models, and engineering-grade design documentation.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Commission CAD Work</a>
+    </div>
+
+    <div class="block-grid">
+      <!-- Card 1 -->
+      <div class="detail-card" onclick="openProjectModal('cad-designs')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+          <span class="card-corner-badge">3D CNC &bull; Teakwood</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Parametric Wave Wall Panel</h3>
+          <p class="detail-item-desc">Custom relief toolpaths designed in SketchUp and carved with industrial CNC routers. Hand-finished with natural dark walnut stain.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">SketchUp</span>
+            <span class="badge-pill-tool">CNC Router</span>
+            <span class="badge-pill-tool">Wood Art</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="detail-card" onclick="openProjectModal('cad-designs')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+          <span class="card-corner-badge">Relief Carving</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Geometric Tessellation Mural</h3>
+          <p class="detail-item-desc">High-depth wooden carving featuring multi-level geometric pyramids and shadow play for executive corporate boardrooms.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Illustrator</span>
+            <span class="badge-pill-tool">SketchUp</span>
+            <span class="badge-pill-tool">Solid Oak</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="detail-card" onclick="openProjectModal('sketchup-3d')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
+          <span class="card-corner-badge">Spatial Concept</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Luxury Penthouse Headboard Installation</h3>
+          <p class="detail-item-desc">Full bedroom wall installation featuring integrated warm LED backlighting and fluted CNC wood columns.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">SketchUp</span>
+            <span class="badge-pill-tool">Photoshop</span>
+            <span class="badge-pill-tool">Architecture</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: POSTERS / VISUAL DESIGNS -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">02 &bull; VISUAL DESIGN</span>
+        <h2 class="block-title">Posters / Visual Designs</h2>
+        <p class="block-sub">Bold editorial posters, event creatives, and striking visual compositions designed for impact.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Request Design</a>
+    </div>
+
+    <div class="block-grid">
+      <!-- Card 1 -->
+      <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+          <span class="card-corner-badge">Multi-Tier MDF</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">8-Layer Mandala Wall Sculpture</h3>
+          <p class="detail-item-desc">Precision laser-cut MDF layers stacked to create profound three-dimensional depth, coated in matte obsidian and metallic gold.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">CorelDraw</span>
+            <span class="badge-pill-tool">Laser CNC</span>
+            <span class="badge-pill-tool">Hand Assembly</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+          <span class="card-corner-badge">Resin Inlay</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Emerald River Resin Wall Art</h3>
+          <p class="detail-item-desc">Live-edge timber and laser-etched MDF channels filled with multi-pour metallic emerald green and gold resin.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Resin Art</span>
+            <span class="badge-pill-tool">Epoxy</span>
+            <span class="badge-pill-tool">Woodworking</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+          <span class="card-corner-badge">Modern Mirror Art</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Reflective Geometric Wall Medallion</h3>
+          <p class="detail-item-desc">Laser cut acrylic mirror facets interlocked with textured MDF borders, creating striking light reflections.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">CorelDraw</span>
+            <span class="badge-pill-tool">Acrylic Mirror</span>
+            <span class="badge-pill-tool">MDF</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 3: BRAND IDENTITY SYSTEMS -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">03 &bull; SOCIAL AWARENESS</span>
+        <h2 class="block-title">Social Issues</h2>
+        <p class="block-sub">Powerful visual campaigns and awareness creatives addressing critical social topics with design empathy.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Collaborate on Campaign</a>
+    </div>
+
+    <div class="block-grid">
+      <!-- Card 1 -->
+      <div class="detail-card" onclick="openProjectModal('brand-identity')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+          <span class="card-corner-badge">Identity &bull; Logo</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Brand Identity Master System</h3>
+          <p class="detail-item-desc">Comprehensive brand identity: custom geometric serif wordmark, monogram icon, metallic color palette, and corporate stationery.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Illustrator</span>
+            <span class="badge-pill-tool">InDesign</span>
+            <span class="badge-pill-tool">Vector</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="detail-card" onclick="openProjectModal('brand-identity')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+          <span class="card-corner-badge">Corporate Collateral</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Executive Stationery &amp; Letterhead System</h3>
+          <p class="detail-item-desc">Luxury stationery suite including premium textured cotton business cards, foiled letterheads, and presentation folders.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Photoshop</span>
+            <span class="badge-pill-tool">Illustrator</span>
+            <span class="badge-pill-tool">Print Prep</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="detail-card" onclick="openProjectModal('social-campaigns')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+          <span class="card-corner-badge">Brand Guidelines</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Design Guidelines &amp; Typography Book</h3>
+          <p class="detail-item-desc">A 40-page comprehensive brand rulebook covering spacing, digital color profiles, dark mode palettes, and icon grids.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">InDesign</span>
+            <span class="badge-pill-tool">Typography</span>
+            <span class="badge-pill-tool">Design Rules</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LUXURY RIGID PACKAGING -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">04 &bull; LENS &amp; LIGHT</span>
+        <h2 class="block-title">Photography</h2>
+        <p class="block-sub">Creative product photography, editorial captures, and visual storytelling through the lens.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Book a Shoot</a>
+    </div>
+
+    <div class="block-grid">
+      <!-- Card 1 -->
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+          <span class="card-corner-badge">Rigid Box</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Premium Collector's Packaging</h3>
+          <p class="detail-item-desc">Heavyweight rigid presentation box with hidden magnetic clasp, matte velvet finish, and embossed copper foil typography.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Illustrator</span>
+            <span class="badge-pill-tool">CorelDraw</span>
+            <span class="badge-pill-tool">Die-Cutter</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+          <span class="card-corner-badge">Luxury Mailer</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Direct-To-Consumer Safe Artwork Crates</h3>
+          <p class="detail-item-desc">Reinforced courier packaging system with custom shock-absorbing foam inserts for global shipping of delicate 3D wood sculptures.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Industrial CAD</span>
+            <span class="badge-pill-tool">Illustrator</span>
+            <span class="badge-pill-tool">Packaging</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+          <span class="card-corner-badge">Embossed Print</span>
+        </div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Certificate of Authenticity &amp; Wax Seal Suite</h3>
+          <p class="detail-item-desc">Numbered certificates printed on heavy linen cardstock with gold foil security borders and personalized wax seal stamps.</p>
+          <div class="detail-tools-row">
+            <span class="badge-pill-tool">Photoshop</span>
+            <span class="badge-pill-tool">Foil Stamp</span>
+            <span class="badge-pill-tool">Linen Stock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Banner -->
+  <div style="max-width: 1240px; margin: 80px auto; padding: 0 32px;">
+    <div class="cta-inner-card">
+      <div class="cta-text-left">
+        <h3 class="cta-heading-white">Have a Project or Collaboration in Mind?</h3>
+        <p class="cta-sub-muted">Whether it's a bespoke 3D CNC wall piece, branding overhaul, or custom packaging, let's create it together.</p>
+      </div>
+      <div style="display:flex; gap:14px; flex-wrap:wrap;">
+        <a href="contact.html" class="btn-primary-orange">Hire Tanishq</a>
+        <a href="index.html" class="btn-secondary-close">Return to Main Site</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared Project Modal -->
+  <div id="project-modal" class="project-modal-backdrop" onclick="closeProjectModal(event)">
+    <div class="project-modal-dialog">
+      <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
+      <div class="modal-header-image" id="modal-img">
+        <span class="modal-tag" id="modal-tag">PROJECT SPOTLIGHT</span>
+      </div>
+      <div class="modal-body-content">
+        <h2 class="modal-title" id="modal-title">Project Title</h2>
+        <span class="modal-category" id="modal-cat">Category</span>
+        <p class="modal-description" id="modal-desc">Detailed project description goes here.</p>
+        
+        <div class="modal-details-grid">
+          <div class="modal-detail-box">
+            <span class="detail-box-label">Tools Used</span>
+            <span class="detail-box-val" id="modal-tools">Illustrator, Photoshop</span>
+          </div>
+          <div class="modal-detail-box">
+            <span class="detail-box-label">Role</span>
+            <span class="detail-box-val" id="modal-role">Lead Creative Designer</span>
+          </div>
+          <div class="modal-detail-box">
+            <span class="detail-box-label">Brand / Client</span>
+            <span class="detail-box-val" id="modal-client">Independent Client</span>
+          </div>
+        </div>
+
+        <div class="modal-action-row">
+          <a href="contact.html" class="btn-primary-orange">Discuss Similar Project</a>
+          <button type="button" class="btn-secondary-close" onclick="closeProjectModal()">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
