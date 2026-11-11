@@ -1,140 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>document.documentElement.classList.add("fx-boot");</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Tanishq Sharma — Graphic Designer &amp; Visual Creative</title>
+  <script>
+    (() => {
+      const root = document.documentElement;
+      const navigation = performance.getEntriesByType('navigation')[0];
+      let shouldPlay = true;
+
+      try {
+        const key = 'tanishq-welcome-intro-seen';
+        const seen = sessionStorage.getItem(key) === 'true';
+        shouldPlay = navigation?.type === 'reload' || !seen;
+        if (shouldPlay) sessionStorage.setItem(key, 'true');
+      } catch (error) {
+        console.warn('Welcome intro session preference could not be saved.', error);
+      }
+
+      root.dataset.welcomeIntro = shouldPlay ? 'play' : 'skip';
+      root.classList.toggle('welcome-active', shouldPlay);
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-
-<style>
-/* NEW VIDEO INTRO STYLE START */
-#new-intro {
-    position: fixed !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100vh !important;
-    height: 100dvh !important;
-    background: #000 !important;
-    z-index: 2147483647 !important;
-    overflow: hidden !important;
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 1s ease, visibility 1s ease;
-}
-
-#intro-video {
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-}
-
-#new-intro.intro-exit {
-    opacity: 0 !important;
-    visibility: hidden !important;
-    pointer-events: none !important;
-}
-
-body.intro-running {
-    overflow: hidden !important;
-}
-/* NEW VIDEO INTRO STYLE END */
-</style>
-
 </head>
-<body class="cinema-intro-active">
+<body>
 
-<!-- NEW VIDEO INTRO START -->
-<div id="new-intro">
-    <video
-        id="intro-video"
-        autoplay
-        muted
-        playsinline
-        preload="auto"
-    >
-        <source src="./new%20intro.mp4" type="video/mp4">
-    </video>
-</div>
-<!-- NEW VIDEO INTRO END -->
-
-<script>
-/* NEW VIDEO INTRO SCRIPT START */
-(() => {
-    const intro = document.getElementById('new-intro');
-    const video = document.getElementById('intro-video');
-
-    if (!intro || !video) return;
-
-    document.body.classList.add('intro-running');
-
-    let completed = false;
-
-    function finishIntro() {
-        if (completed) return;
-        completed = true;
-
-        intro.classList.add('intro-exit');
-        document.body.classList.remove('intro-running');
-
-        setTimeout(() => intro.remove(), 1100);
-    }
-
-    video.addEventListener('ended', finishIntro);
-    video.addEventListener('error', () => {
-        console.error('Intro video could not load:', video.currentSrc);
-    });
-
-    video.muted = true;
-
-    video.play().then(() => {
-        console.log('NEW INTRO VIDEO PLAYING');
-    }).catch(error => {
-        console.error('Video autoplay blocked:', error);
-    });
-
-    // Allow manual playback if browser blocks autoplay
-    intro.addEventListener('click', () => {
-        video.play();
-    });
-})();
-/* NEW VIDEO INTRO SCRIPT END */
-</script>
-
-
-  <!-- Full-screen character intro; session state is managed by script.js -->
-  <div id="cinema-intro" class="cinema-intro-overlay" role="dialog" aria-modal="true" aria-label="Tanishq Sharma portfolio introduction">
-    <div class="cinema-intro-type" aria-hidden="true">
-      <span class="cinema-intro-kicker">VISUAL CREATIVE &bull; NOIDA, INDIA</span>
-      <p class="cinema-intro-name">Tanishq<br><em>Sharma</em></p>
-      <span class="cinema-intro-role">GRAPHIC DESIGNER</span>
+  <div class="welcome-overlay" id="welcome-intro" aria-hidden="true">
+    <div class="welcome-ambient-light"></div>
+    <div class="welcome-particles">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
-    <video class="cinema-intro-video" autoplay muted playsinline preload="auto" width="1920" height="1080" aria-hidden="true">
-      <source src="1.mp4" type="video/mp4">
-    </video>
+    <div class="welcome-content">
+      <p class="welcome-eyebrow">ENTERING THE CREATIVE STUDIO</p>
+      <h1 class="welcome-title" aria-label="WELCOME">
+        <span aria-hidden="true">W</span><span aria-hidden="true">E</span><span aria-hidden="true">L</span>
+        <span aria-hidden="true">C</span><span aria-hidden="true">O</span><span aria-hidden="true">M</span>
+        <span aria-hidden="true">E</span>
+      </h1>
+      <p class="welcome-name">TANISHQ SHARMA</p>
+      <p class="welcome-role">GRAPHIC DESIGNER <span>&amp;</span> VISUAL CREATIVE</p>
+    </div>
+    <div class="welcome-progress" aria-hidden="true"><span></span></div>
   </div>
 
-  <!-- Fixed scroll-scrubbed background canvas -->
-  <div class="canvas-wrapper">
-    <canvas id="animation-canvas"></canvas>
-    <div class="ambient-background" aria-hidden="true"></div>
+  <div class="scroll-frame-background" aria-hidden="true">
+    <img class="scroll-frame-fallback" src="scroll_frames_120fps_webp/frame_00001.webp" alt="">
+    <canvas id="scroll-frame-canvas" width="1280" height="720"></canvas>
+    <div class="live-wallpaper" aria-hidden="true">
+      <span class="live-wallpaper-flow live-wallpaper-flow--warm"></span>
+      <span class="live-wallpaper-flow live-wallpaper-flow--cool"></span>
+      <span class="live-wallpaper-grain"></span>
+    </div>
   </div>
 
   <!-- Top Floating Navigation -->
   <header class="navbar">
-    <div class="brand-placeholder" aria-hidden="true"></div>
+    <a href="#" class="brand-logo">
+      <div class="brand-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2L15 8L21 9L16.5 13.5L18 20L12 16.5L6 20L7.5 13.5L3 9L9 8L12 2Z" fill="url(#brand-grad)" />
+          <defs>
+            <linearGradient id="brand-grad" x1="3" y1="2" x2="21" y2="20" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#ff4500" />
+              <stop offset="0.5" stop-color="#ff8800" />
+              <stop offset="1" stop-color="#ffb700" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <span class="brand-name neon-brand">TANISHQ SHARMA</span>
+    </a>
 
-    <nav class="nav-pill">
+    <button class="nav-menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <nav class="nav-pill" id="primary-navigation" aria-label="Primary navigation">
       <a href="#about" class="nav-item">About Me</a>
       <a href="creativity.html" class="nav-item">Creativity &amp; Gallery</a>
       <a href="#skills" class="nav-item">Skills</a>
       <a href="#testimonials" class="nav-item">Testimonials</a>
       <a href="contact.html" class="nav-item">Contact</a>
+      <a href="wall-signature.html" class="nav-item mobile-wall-link">WALL SIGNATURE</a>
     </nav>
 
     <div class="nav-cta">
@@ -154,17 +108,13 @@ body.intro-running {
         
         <!-- Left: Hero Headline & Action (Compact & firmly left-aligned so center portrait is unobstructed) -->
         <div class="hero-left-content">
-          <video class="hero-character" muted loop playsinline preload="none" aria-hidden="true">
-            <source src="ttt-transparent.webm" type="video/webm">
-          </video>
-
           <div class="pill-badge">
             <span class="badge-dot"></span>
             <span class="badge-text">GRAPHIC DESIGNER &bull; NOIDA, INDIA</span>
           </div>
 
           <h1 class="hero-title hero-title-compact">
-            <span class="hero-headline-line">Visual Storytelling Branding &amp; Identity</span><br>
+            <span class="hero-scroll-reveal" data-scroll-reveal>Visual Storytelling<br>Branding &amp; Identity</span><br>
             <span class="serif-accent neon-text-highlight">Tanishq Sharma</span>
           </h1>
 
@@ -173,8 +123,8 @@ body.intro-running {
           </p>
 
           <div class="hero-cta-group">
-            <!-- Hire Me opens a direct WhatsApp conversation -->
-            <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-orange">Hire Me</a>
+            <!-- Hire Me opens separate contact.html form page -->
+            <a href="contact.html" class="btn-primary-orange">Hire Me</a>
 
             <!-- View My Creativity CTA button opening dedicated creativity.html gallery page -->
             <a href="creativity.html" class="btn-view-creativity">
@@ -194,7 +144,7 @@ body.intro-running {
             </a>
             
             <div class="contact-pill-preview">
-              <a href="mailto:tanishq.sharma.vds@gmail.com" class="contact-email-addr">tanishq.sharma.vds@gmail.com</a>
+              <span class="contact-email-addr">tanishq.sharma.vds@gmail.com</span>
               <span class="contact-location-info">&bull; Noida, India</span>
             </div>
           </div>
@@ -229,10 +179,142 @@ body.intro-running {
           <a href="creativity.html" class="marquee-hint" style="color:var(--accent-amber); text-decoration:none;">View Full Gallery &rarr;</a>
         </div>
         
-        <div class="marquee-track-container" aria-label="Continuous creative project showcase">
-          <div class="marquee-content-track" id="marquee-content-track" aria-live="off"></div>
+        <div class="marquee-track-container">
+          <div class="marquee-content-track" id="carousel-track" aria-label="Selected portfolio projects" hidden>
+
+            <!-- Project Item 1: CAD Designs -->
+            <div class="marquee-card" onclick="openProjectModal('cad-designs')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+                <span class="card-badge-cat">CAD &bull; Technical</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">CAD Designs &amp; 3D Art</h4>
+                <p class="card-desc">Technical design studies and 3D concepts created with precision.</p>
+              </div>
+            </div>
+
+            <!-- Project Item 2: Luxury Packaging -->
+            <div class="marquee-card" onclick="openProjectModal('luxury-packaging')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+                <span class="card-badge-cat">Packaging &bull; Print</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Luxury Packaging Systems</h4>
+                <p class="card-desc">Rigid box construction, gold foil &amp; corporate stationery.</p>
+              </div>
+            </div>
+
+            <!-- Project Item 3: Poster & Visual Design -->
+            <div class="marquee-card" onclick="openProjectModal('visual-designs')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+                <span class="card-badge-cat">Poster &bull; Visual</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Poster &amp; Visual Design</h4>
+                <p class="card-desc">Editorial layouts, promotional graphics, and striking visual concepts.</p>
+              </div>
+            </div>
+
+            <!-- Project Item 4: Brand Identity System -->
+            <div class="marquee-card" onclick="openProjectModal('brand-identity')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+                <span class="card-badge-cat">Branding &bull; Identity</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Full Brand Identity Systems</h4>
+                <p class="card-desc">Vector logo typography, color guidelines &amp; brand assets.</p>
+              </div>
+            </div>
+
+            <!-- Project Item 5: Social Media Campaigns -->
+            <div class="marquee-card" onclick="openProjectModal('social-campaigns')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+                <span class="card-badge-cat">Digital Marketing</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Cinematic Social Campaigns</h4>
+                <p class="card-desc">Photoshop &amp; Illustrator marketing collateral for conversion.</p>
+              </div>
+            </div>
+
+            <!-- Project Item 6: SketchUp 3D Spatial Visualization -->
+            <div class="marquee-card" onclick="openProjectModal('sketchup-3d')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
+                <span class="card-badge-cat">3D Modeling</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Product 3D Spatial Concepts</h4>
+                <p class="card-desc">SketchUp spatial modeling for home décor installations.</p>
+              </div>
+            </div>
+
+            <!-- DUPLICATE SET FOR SEAMLESS 100% INFINITE LOOP -->
+            <div class="marquee-card" onclick="openProjectModal('cad-designs')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+                <span class="card-badge-cat">CAD &bull; Technical</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">CAD Designs &amp; 3D Art</h4>
+                <p class="card-desc">Technical design studies and 3D concepts created with precision.</p>
+              </div>
+            </div>
+
+            <div class="marquee-card" onclick="openProjectModal('luxury-packaging')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+                <span class="card-badge-cat">Packaging &bull; Print</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Luxury Packaging Systems</h4>
+                <p class="card-desc">Rigid box construction, gold foil &amp; corporate stationery.</p>
+              </div>
+            </div>
+
+            <div class="marquee-card" onclick="openProjectModal('visual-designs')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+                <span class="card-badge-cat">Poster &bull; Visual</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Poster &amp; Visual Design</h4>
+                <p class="card-desc">Editorial layouts, promotional graphics, and striking visual concepts.</p>
+              </div>
+            </div>
+
+            <div class="marquee-card" onclick="openProjectModal('brand-identity')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+                <span class="card-badge-cat">Branding &bull; Identity</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Full Brand Identity Systems</h4>
+                <p class="card-desc">Vector logo typography, color guidelines &amp; brand assets.</p>
+              </div>
+            </div>
+
+            <div class="marquee-card" onclick="openProjectModal('social-campaigns')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+                <span class="card-badge-cat">Digital Marketing</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Cinematic Social Campaigns</h4>
+                <p class="card-desc">Photoshop &amp; Illustrator marketing collateral for conversion.</p>
+              </div>
+            </div>
+
+            <div class="marquee-card" onclick="openProjectModal('sketchup-3d')">
+              <div class="card-thumb" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
+                <span class="card-badge-cat">3D Modeling</span>
+              </div>
+              <div class="card-meta">
+                <h4 class="card-title">Product 3D Spatial Concepts</h4>
+                <p class="card-desc">SketchUp spatial modeling for home décor installations.</p>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <p class="marquee-empty-state" id="marquee-empty-state" hidden>No images found in the Carousel folder.</p>
+        <div class="carousel-controls" aria-label="Carousel controls">
+          <button type="button" id="carousel-previous" aria-label="Scroll projects backward">&larr;</button>
+          <button type="button" id="carousel-next" aria-label="Scroll projects forward">&rarr;</button>
+        </div>
       </div>
 
       <!-- Bottom of Hero: Stats Card and Technical Tools Strip -->
@@ -287,30 +369,153 @@ body.intro-running {
     </section>
 
 
-    <!-- HOMEPAGE SELECTED WORKS, SEPARATE FROM THE FULL PROJECT GALLERY -->
+    <!-- DEDICATED "VIEW MY CREATIVITY" PROJECT SHOWCASE SECTION -->
     <section class="section section-creativity" id="creativity-gallery">
-      <div class="selected-works-heading">
+      <div class="creativity-header">
         <div class="pill-badge-sub">
           <span class="badge-dot-orange"></span>
-          <span>PORTFOLIO &bull; SELECTED WORKS</span>
+          <span>PORTFOLIO &bull; CREATIVE WORKS</span>
         </div>
-        <h2 class="selected-works-title">Selected<br><span>Projects</span><i>.</i></h2>
-        <p class="selected-works-tagline">— Real Designs. Real Results. <span aria-hidden="true">♡</span></p>
-        <p class="creativity-subtitle">A curated selection of visual design and creative work.</p>
+        <h2 class="section-heading">
+          Explore My Creativity &amp;<br>
+          Design Artworks
+        </h2>
+        <p class="creativity-subtitle">
+          Selected work from the full portfolio archive. Explore each category and project in the gallery.
+        </p>
+
+        <!-- Project Filter Tabs & Dedicated Page Button -->
+        <div class="gallery-filter-tabs">
+          <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+          <button class="filter-btn" onclick="filterProjects('brand-identity', this)">Brand Identity / Logo</button>
+          <button class="filter-btn" onclick="filterProjects('cad-designs', this)">CAD Designs</button>
+          <button class="filter-btn" onclick="filterProjects('posters', this)">Posters / Visual Designs</button>
+          <button class="filter-btn" onclick="filterProjects('social-issues', this)">Social Issues</button>
+          <button class="filter-btn" onclick="filterProjects('packaging', this)">Packaging Design</button>
+          <button class="filter-btn" onclick="filterProjects('magazine', this)">Magazine Design</button>
+          <button class="filter-btn" onclick="filterProjects('photography', this)">Photography</button>
+          <button class="filter-btn" onclick="filterProjects('3d-models', this)">3D Models &amp; Renders</button>
+          <a href="creativity.html" class="filter-btn" style="background:var(--accent-orange); color:#fff; text-decoration:none; border-color:transparent;">Open Full Detailed Gallery &rarr;</a>
+        </div>
       </div>
 
-      <div class="selected-works-stats" id="selected-works-stats" aria-label="Selected works overview"></div>
-      <div class="selected-works-grid" id="selected-works-grid" aria-label="Selected projects"></div>
+      <!-- Main Project Gallery Grid -->
+      <div class="creativity-grid" id="projects-grid">
 
-      <!-- Full-gallery CTA -->
+        <!-- Item 1 -->
+        <div class="gallery-card" data-category="cad-designs" onclick="openProjectModal('cad-designs')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+            <span class="gallery-category-pill">CAD &bull; Technical</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">CAD DESIGN</span>
+            <h3 class="gallery-card-title">CAD Designs</h3>
+            <p class="gallery-card-summary">Precision technical CAD designs and engineering-grade drawings crafted with SketchUp and CorelDraw.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">SketchUp</span>
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">CorelDraw</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="gallery-card" data-category="brand-identity" onclick="openProjectModal('luxury-packaging')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+            <span class="gallery-category-pill">Branding &bull; Logo</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">BRAND IDENTITY</span>
+            <h3 class="gallery-card-title">Brand Identity / Logo</h3>
+            <p class="gallery-card-summary">Comprehensive brand identity systems — custom logomarks, color palettes, typography hierarchy and corporate assets.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">Photoshop</span>
+              <span class="badge-tool">CorelDraw</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="gallery-card" data-category="posters" onclick="openProjectModal('visual-designs')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+            <span class="gallery-category-pill">Poster &bull; Visual</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">VISUAL DESIGN</span>
+            <h3 class="gallery-card-title">Posters / Visual Designs</h3>
+            <p class="gallery-card-summary">Bold poster designs and striking visual creatives crafted for impact — from event posters to editorial layouts.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">Photoshop</span>
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">InDesign</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="gallery-card" data-category="social-issues" onclick="openProjectModal('brand-identity')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+            <span class="gallery-category-pill">Social &bull; Awareness</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">SOCIAL ISSUES</span>
+            <h3 class="gallery-card-title">Social Issues</h3>
+            <p class="gallery-card-summary">Powerful awareness campaigns and advocacy visuals designed to communicate critical social messages effectively.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">InDesign</span>
+              <span class="badge-tool">Photoshop</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="gallery-card" data-category="packaging" onclick="openProjectModal('social-campaigns')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+            <span class="gallery-category-pill">Packaging &bull; Print</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">PACKAGING DESIGN</span>
+            <h3 class="gallery-card-title">Packaging Design</h3>
+            <p class="gallery-card-summary">Premium packaging solutions — rigid boxes, die-cut structures, foil stamping and luxury unboxing experiences.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">Illustrator</span>
+              <span class="badge-tool">CorelDraw</span>
+              <span class="badge-tool">Photoshop</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="gallery-card" data-category="photography" onclick="openProjectModal('sketchup-3d')">
+          <div class="gallery-card-img" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
+            <span class="gallery-category-pill">Photography</span>
+          </div>
+          <div class="gallery-card-info">
+            <span class="gallery-card-tag">PHOTOGRAPHY</span>
+            <h3 class="gallery-card-title">Photography</h3>
+            <p class="gallery-card-summary">Creative photography — product shoots, editorial captures, and visual storytelling through the lens.</p>
+            <div class="gallery-tools-row">
+              <span class="badge-tool">Photoshop</span>
+              <span class="badge-tool">Lightroom</span>
+              <span class="badge-tool">Firefly</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Gallery CTA: Triggers the Suggestion Box modal -->
       <div class="gallery-bottom-cta">
         <div class="cta-inner-card">
           <div class="cta-text-left">
-            <h3 class="cta-heading-white">Want to Explore More?</h3>
-            <p class="cta-sub-muted">Browse every project in the complete category-wise gallery.</p>
+            <h3 class="cta-heading-white">Have a Unique Design or Art Idea in Mind?</h3>
+            <p class="cta-sub-muted">Suggest an innovative project concept, or explore the full detailed multi-section gallery.</p>
           </div>
           <div style="display:flex; gap:12px; flex-wrap:wrap;">
-            <a href="creativity.html" class="btn-primary-orange">Open Full Gallery &rarr;</a>
+            <button type="button" class="btn-primary-orange" onclick="openSuggestionModal()">Start a Project</button>
+            <a href="creativity.html" class="btn-view-creativity">Full Section Gallery &rarr;</a>
           </div>
         </div>
       </div>
@@ -345,7 +550,7 @@ body.intro-running {
         <!-- Left: Design Visual Card -->
         <div class="minds-portrait-card">
           <div class="portrait-img-wrapper">
-            <img src="wall%20signautre%20reveal/Wall%20Signature_%20The%20Grand%20Reveal.png" alt="WALL SIGNATURE grand reveal campaign artwork" class="portrait-photo" width="1122" height="1402" loading="lazy" decoding="async">
+            <img src="video_frames_24fps/frame_000051.jpg" alt="Tanishq Sharma Design Visual" class="portrait-photo">
             <div class="portrait-orange-overlay"></div>
             <div class="portrait-card-badge">
               <span class="spotlight-tag">GRAPHIC DESIGNER</span>
@@ -481,7 +686,7 @@ body.intro-running {
             <a href="mailto:tanishq.sharma.vds@gmail.com" class="contact-link">&bull; tanishq.sharma.vds@gmail.com</a>
             <span class="contact-location-info">&bull; Noida, India</span>
           </div>
-          <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-orange btn-full" style="margin-top: 14px;">Hire Me</a>
+          <a href="contact.html" class="btn-primary-orange btn-full" style="margin-top: 14px;">Hire Me / Contact Form</a>
         </div>
 
       </div>
@@ -500,43 +705,26 @@ body.intro-running {
           Art Collectors Say
         </h2>
         <p class="testimonials-subtitle">
-          Fictional demo testimonials &mdash; not verified client reviews.
+          Real feedback from interior designers, private collectors, and branding partners who trusted Tanishq's craft.
         </p>
       </div>
 
       <div class="testimonials-grid">
-        <article class="testimonial-card">
-          <span class="testimonial-index">TESTIMONIAL 01</span>
-          <p class="testimonial-quote">&ldquo;Tanishq has a great eye for detail and understands how to turn creative ideas into visually engaging designs. The entire process was smooth and professional.&rdquo;</p>
-          <div class="testimonial-author">
-            <div class="author-meta">
-              <h4 class="author-name">Aarav Mehta</h4>
-              <span class="author-role">Brand Owner &mdash; Branding Project</span>
-            </div>
-          </div>
-        </article>
 
-        <article class="testimonial-card">
-          <span class="testimonial-index">TESTIMONIAL 02</span>
-          <p class="testimonial-quote">&ldquo;The creativity and attention to detail really stood out. Every design felt thoughtfully crafted and aligned perfectly with the vision.&rdquo;</p>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">
+            &ldquo;Working with Tanishq on our complete corporate brand identity and luxury packaging was effortless. He has a rare blend of artistic vision and manufacturing precision.&rdquo;
+          </p>
           <div class="testimonial-author">
+            <div class="author-avatar" style="background-image: url('video_frames_24fps/frame_000100.jpg');"></div>
             <div class="author-meta">
-              <h4 class="author-name">Riya Kapoor</h4>
-              <span class="author-role">Marketing Manager &mdash; Social Media Design</span>
+              <h4 class="author-name">Meera Kapoor</h4>
+              <span class="author-role">Creative Director, Aurum Living</span>
             </div>
           </div>
-        </article>
+        </div>
 
-        <article class="testimonial-card">
-          <span class="testimonial-index">TESTIMONIAL 03</span>
-          <p class="testimonial-quote">&ldquo;From concept to final execution, the designs were clean, creative and impactful. A great experience working together.&rdquo;</p>
-          <div class="testimonial-author">
-            <div class="author-meta">
-              <h4 class="author-name">Aditya Verma</h4>
-              <span class="author-role">Founder &mdash; Creative Design Project</span>
-            </div>
-          </div>
-        </article>
       </div>
     </section>
 
@@ -584,7 +772,7 @@ body.intro-running {
           <li><a href="creativity.html">Creativity &amp; Gallery</a></li>
           <li><a href="#skills">Technical Skills</a></li>
           <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you.">Hire Me</a></li>
+          <li><a href="contact.html">Hire Me</a></li>
         </ul>
       </div>
 
@@ -641,13 +829,12 @@ body.intro-running {
        INTERACTIVE PROJECT DETAIL MODAL
        ========================================================================== -->
   <div id="project-modal" class="project-modal-backdrop" onclick="closeProjectModal(event)">
-    <div class="project-modal-dialog">
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
       <div class="modal-header-image" id="modal-img">
         <span class="modal-tag" id="modal-tag">PROJECT SPOTLIGHT</span>
       </div>
       <div class="modal-body-content">
-        <button type="button" class="modal-back-btn" id="modal-back-btn" onclick="closeProjectModal()" hidden></button>
         <h2 class="modal-title" id="modal-title">Project Title</h2>
         <span class="modal-category" id="modal-cat">Category</span>
         <p class="modal-description" id="modal-desc">Detailed project description goes here.</p>
@@ -670,7 +857,7 @@ body.intro-running {
 
         <div class="modal-action-row">
           <button type="button" class="btn-primary-orange" onclick="openSuggestionModal(); closeProjectModal();">Suggest an Idea</button>
-          <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-white" style="text-decoration:none;">Hire for This</a>
+          <a href="contact.html" class="btn-primary-white" style="text-decoration:none;">Hire for This</a>
           <button type="button" class="btn-secondary-close" onclick="closeProjectModal()">Close</button>
         </div>
       </div>
@@ -740,5 +927,9 @@ body.intro-running {
 
   <script src="portfolio-manifest.js"></script>
   <script src="script.js"></script>
+  <script src="scroll-background.js"></script>
+  <script src="heading-reveal.js"></script>
+  <script src="welcome-intro.js"></script>
+  <script src="mobile-navigation.js"></script>
 </body>
 </html>

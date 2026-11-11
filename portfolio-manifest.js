@@ -5,6 +5,23 @@ window.PORTFOLIO_MANIFEST = {
       "name": "3D Models and Renders",
       "projects": [
         {
+          "id": "3D Models and Renders/70954f5e-959c-40df-b934-16a48a0a0a33.JPG",
+          "folder": "70954f5e-959c-40df-b934-16a48a0a0a33.JPG",
+          "title": "70954f5e 959c 40df b934 16a48a0a0a33",
+          "media": [
+            {
+              "path": "website works /3d mmodels/70954f5e-959c-40df-b934-16a48a0a0a33.JPG",
+              "type": "image",
+              "name": "70954f5e-959c-40df-b934-16a48a0a0a33.JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /3d mmodels/70954f5e-959c-40df-b934-16a48a0a0a33.JPG",
+            "type": "image",
+            "name": "70954f5e-959c-40df-b934-16a48a0a0a33.JPG"
+          }
+        },
+        {
           "id": "3D Models and Renders/cafe",
           "folder": "cafe",
           "title": "cafe",
@@ -27,9 +44,9 @@ window.PORTFOLIO_MANIFEST = {
           }
         },
         {
-          "id": "3D Models and Renders/display stand ",
-          "folder": "display stand ",
-          "title": "display stand ",
+          "id": "3D Models and Renders/display stand",
+          "folder": "display stand",
+          "title": "display stand",
           "media": [
             {
               "path": "website works /3D Models and Renders/display stand /display stahnd.png",
@@ -49,9 +66,9 @@ window.PORTFOLIO_MANIFEST = {
           }
         },
         {
-          "id": "3D Models and Renders/mobile stand ",
-          "folder": "mobile stand ",
-          "title": "mobile stand ",
+          "id": "3D Models and Renders/mobile stand",
+          "folder": "mobile stand",
+          "title": "mobile stand",
           "media": [
             {
               "path": "website works /3D Models and Renders/mobile stand /mobile stand iso.JPG",
@@ -181,9 +198,9 @@ window.PORTFOLIO_MANIFEST = {
           }
         },
         {
-          "id": "Brand Identity : Logo/RED TAPE ",
-          "folder": "RED TAPE ",
-          "title": "RED TAPE ",
+          "id": "Brand Identity : Logo/RED TAPE",
+          "folder": "RED TAPE",
+          "title": "RED TAPE",
           "media": [
             {
               "path": "website works /Brand Identity : Logo/RED TAPE /render redtape.png",
@@ -198,9 +215,9 @@ window.PORTFOLIO_MANIFEST = {
           }
         },
         {
-          "id": "Brand Identity : Logo/THUMBS UP ",
-          "folder": "THUMBS UP ",
-          "title": "THUMBS UP ",
+          "id": "Brand Identity : Logo/THUMBS UP",
+          "folder": "THUMBS UP",
+          "title": "THUMBS UP",
           "media": [
             {
               "path": "website works /Brand Identity : Logo/THUMBS UP /render thumbsup .png",
@@ -426,92 +443,200 @@ window.PORTFOLIO_MANIFEST = {
           }
         },
         {
-          "id": "Photography/RIM LIGHT .JPG",
-          "folder": "RIM LIGHT .JPG",
-          "title": "RIM LIGHT",
+          "id": "Photography/IMG_0004.HEIC",
+          "folder": "IMG_0004.HEIC",
+          "title": "IMG 0004",
           "media": [
             {
-              "path": "website works /Photography/RIM LIGHT .JPG",
+              "path": "website works /Photography/IMG_0004.HEIC",
               "type": "image",
-              "name": "RIM LIGHT .JPG"
+              "name": "IMG_0004.HEIC",
+              "previewPath": "portfolio-previews/ffd7bf4e8c90369597c3ab711105fd7384acc04db356e18fc4851ec9fb239d2c.jpg"
             }
           ],
           "cover": {
-            "path": "website works /Photography/RIM LIGHT .JPG",
+            "path": "website works /Photography/IMG_0004.HEIC",
             "type": "image",
-            "name": "RIM LIGHT .JPG"
+            "name": "IMG_0004.HEIC",
+            "previewPath": "portfolio-previews/ffd7bf4e8c90369597c3ab711105fd7384acc04db356e18fc4851ec9fb239d2c.jpg"
           }
         },
         {
-          "id": "Photography/SIDE LIGHT.JPG",
-          "folder": "SIDE LIGHT.JPG",
-          "title": "SIDE LIGHT",
+          "id": "Photography/IMG_0005 2.JPG",
+          "folder": "IMG_0005 2.JPG",
+          "title": "IMG 0005 2",
           "media": [
             {
-              "path": "website works /Photography/SIDE LIGHT.JPG",
+              "path": "website works /Photography/IMG_0005 2.JPG",
               "type": "image",
-              "name": "SIDE LIGHT.JPG"
+              "name": "IMG_0005 2.JPG"
             }
           ],
           "cover": {
-            "path": "website works /Photography/SIDE LIGHT.JPG",
+            "path": "website works /Photography/IMG_0005 2.JPG",
             "type": "image",
-            "name": "SIDE LIGHT.JPG"
+            "name": "IMG_0005 2.JPG"
           }
         },
         {
-          "id": "Photography/SYMETTERY.jpg",
-          "folder": "SYMETTERY.jpg",
-          "title": "SYMETTERY",
+          "id": "Photography/IMG_0272.heic",
+          "folder": "IMG_0272.heic",
+          "title": "IMG 0272",
           "media": [
             {
-              "path": "website works /Photography/SYMETTERY.jpg",
+              "path": "website works /Photography/IMG_0272.heic",
               "type": "image",
-              "name": "SYMETTERY.jpg"
+              "name": "IMG_0272.heic",
+              "previewPath": "portfolio-previews/a5b8220580e54ae71179d23420ad0b8f242201e4e7eeba5233ace1faab79cdb1.jpg"
             }
           ],
           "cover": {
-            "path": "website works /Photography/SYMETTERY.jpg",
+            "path": "website works /Photography/IMG_0272.heic",
             "type": "image",
-            "name": "SYMETTERY.jpg"
+            "name": "IMG_0272.heic",
+            "previewPath": "portfolio-previews/a5b8220580e54ae71179d23420ad0b8f242201e4e7eeba5233ace1faab79cdb1.jpg"
           }
         },
         {
-          "id": "Photography/SYMETTRY.JPG",
-          "folder": "SYMETTRY.JPG",
-          "title": "SYMETTRY",
+          "id": "Photography/IMG_0277.heic",
+          "folder": "IMG_0277.heic",
+          "title": "IMG 0277",
           "media": [
             {
-              "path": "website works /Photography/SYMETTRY.JPG",
+              "path": "website works /Photography/IMG_0277.heic",
               "type": "image",
-              "name": "SYMETTRY.JPG"
+              "name": "IMG_0277.heic",
+              "previewPath": "portfolio-previews/158a73d81aced07366a533687b4b7ce4f2356451f687e8342271c5f6d0f8d95a.jpg"
             }
           ],
           "cover": {
-            "path": "website works /Photography/SYMETTRY.JPG",
+            "path": "website works /Photography/IMG_0277.heic",
             "type": "image",
-            "name": "SYMETTRY.JPG"
+            "name": "IMG_0277.heic",
+            "previewPath": "portfolio-previews/158a73d81aced07366a533687b4b7ce4f2356451f687e8342271c5f6d0f8d95a.jpg"
           }
         },
         {
-          "id": "Photography/TERETTORY.JPG",
-          "folder": "TERETTORY.JPG",
-          "title": "TERETTORY",
+          "id": "Photography/IMG_6620.JPG",
+          "folder": "IMG_6620.JPG",
+          "title": "IMG 6620",
           "media": [
             {
-              "path": "website works /Photography/TERETTORY.JPG",
+              "path": "website works /Photography/IMG_6620.JPG",
               "type": "image",
-              "name": "TERETTORY.JPG"
+              "name": "IMG_6620.JPG"
             }
           ],
           "cover": {
-            "path": "website works /Photography/TERETTORY.JPG",
+            "path": "website works /Photography/IMG_6620.JPG",
             "type": "image",
-            "name": "TERETTORY.JPG"
+            "name": "IMG_6620.JPG"
+          }
+        },
+        {
+          "id": "Photography/IMG_6623 (1).JPG",
+          "folder": "IMG_6623 (1).JPG",
+          "title": "IMG 6623 (1)",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6623 (1).JPG",
+              "type": "image",
+              "name": "IMG_6623 (1).JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6623 (1).JPG",
+            "type": "image",
+            "name": "IMG_6623 (1).JPG"
+          }
+        },
+        {
+          "id": "Photography/IMG_6680.JPG",
+          "folder": "IMG_6680.JPG",
+          "title": "IMG 6680",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6680.JPG",
+              "type": "image",
+              "name": "IMG_6680.JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6680.JPG",
+            "type": "image",
+            "name": "IMG_6680.JPG"
+          }
+        },
+        {
+          "id": "Photography/IMG_6685 (1).JPG",
+          "folder": "IMG_6685 (1).JPG",
+          "title": "IMG 6685 (1)",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6685 (1).JPG",
+              "type": "image",
+              "name": "IMG_6685 (1).JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6685 (1).JPG",
+            "type": "image",
+            "name": "IMG_6685 (1).JPG"
+          }
+        },
+        {
+          "id": "Photography/IMG_6735.JPG",
+          "folder": "IMG_6735.JPG",
+          "title": "IMG 6735",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6735.JPG",
+              "type": "image",
+              "name": "IMG_6735.JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6735.JPG",
+            "type": "image",
+            "name": "IMG_6735.JPG"
+          }
+        },
+        {
+          "id": "Photography/IMG_6746.jpg",
+          "folder": "IMG_6746.jpg",
+          "title": "IMG 6746",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6746.jpg",
+              "type": "image",
+              "name": "IMG_6746.jpg"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6746.jpg",
+            "type": "image",
+            "name": "IMG_6746.jpg"
+          }
+        },
+        {
+          "id": "Photography/IMG_6764.JPG",
+          "folder": "IMG_6764.JPG",
+          "title": "IMG 6764",
+          "media": [
+            {
+              "path": "website works /Photography/IMG_6764.JPG",
+              "type": "image",
+              "name": "IMG_6764.JPG"
+            }
+          ],
+          "cover": {
+            "path": "website works /Photography/IMG_6764.JPG",
+            "type": "image",
+            "name": "IMG_6764.JPG"
           }
         }
       ],
-      "featuredProjectId": "Photography/FLORA.JPG"
+      "featuredProjectId": "Photography/IMG_6746.jpg"
     },
     {
       "id": "Posters : Visual Designs",
@@ -565,26 +690,6 @@ window.PORTFOLIO_MANIFEST = {
               "path": "website works /Posters : Visual Designs/sneakers/NIKE.png",
               "type": "image",
               "name": "NIKE.png"
-            },
-            {
-              "path": "website works /Posters : Visual Designs/sneakers/PUMA BILLBOARD.jpg",
-              "type": "image",
-              "name": "PUMA BILLBOARD.jpg"
-            },
-            {
-              "path": "website works /Posters : Visual Designs/sneakers/puma sneaker poster_.jpg",
-              "type": "image",
-              "name": "puma sneaker poster_.jpg"
-            },
-            {
-              "path": "website works /Posters : Visual Designs/sneakers/PUMA WOMENS WEAR.jpg",
-              "type": "image",
-              "name": "PUMA WOMENS WEAR.jpg"
-            },
-            {
-              "path": "website works /Posters : Visual Designs/sneakers/puma.png",
-              "type": "image",
-              "name": "puma.png"
             }
           ],
           "cover": {
@@ -621,16 +726,16 @@ window.PORTFOLIO_MANIFEST = {
           }
         }
       ],
-      "featuredProjectId": "Posters : Visual Designs/apple watch"
+      "featuredProjectId": "Posters : Visual Designs/sneakers"
     },
     {
       "id": "Social Issues",
       "name": "Social Issues",
       "projects": [
         {
-          "id": "Social Issues/domestic violence ",
-          "folder": "domestic violence ",
-          "title": "domestic violence ",
+          "id": "Social Issues/domestic violence",
+          "folder": "domestic violence",
+          "title": "domestic violence",
           "media": [
             {
               "path": "website works /Social Issues/domestic violence /social issue 3.png",
@@ -673,9 +778,31 @@ window.PORTFOLIO_MANIFEST = {
             "type": "image",
             "name": "social issue 3.png"
           }
+        },
+        {
+          "id": "Social Issues/violence against women",
+          "folder": "violence against women",
+          "title": "violence against women",
+          "media": [
+            {
+              "path": "website works /Social Issues/violence against women/social issue 1.pdf",
+              "type": "document",
+              "name": "social issue 1.pdf"
+            },
+            {
+              "path": "website works /Social Issues/violence against women/social issue 2.pdf",
+              "type": "document",
+              "name": "social issue 2.pdf"
+            }
+          ],
+          "cover": {
+            "path": "website works /Social Issues/violence against women/social issue 1.pdf",
+            "type": "document",
+            "name": "social issue 1.pdf"
+          }
         }
       ],
-      "featuredProjectId": "Social Issues/domestic violence "
+      "featuredProjectId": "Social Issues/domestic violence"
     },
     {
       "id": "WALL SIGNATURE",
@@ -872,12 +999,12 @@ window.PORTFOLIO_MANIFEST = {
   },
   "carousel": [
     {
-      "id": "carousel/crousel/3 FLAVOURS LABEL DESIGN.jpg",
+      "id": "Packaging Design/3 FLAVOURS LABEL DESIGN.jpg",
+      "folder": "3 FLAVOURS LABEL DESIGN.jpg",
       "title": "3 FLAVOURS LABEL DESIGN",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/3 FLAVOURS LABEL DESIGN.jpg",
+          "path": "website works /Packaging Design/3 FLAVOURS LABEL DESIGN.jpg",
           "type": "image",
           "name": "3 FLAVOURS LABEL DESIGN.jpg"
         }
@@ -886,15 +1013,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/3 FLAVOURS LABEL DESIGN.jpg",
         "type": "image",
         "name": "3 FLAVOURS LABEL DESIGN.jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/APPLE WATCH POSTER-01.jpg",
-      "title": "APPLE WATCH POSTER 01",
-      "category": "crousel",
+      "id": "Posters : Visual Designs/apple watch",
+      "folder": "apple watch",
+      "title": "apple watch",
       "media": [
         {
-          "path": "crousel/APPLE WATCH POSTER-01.jpg",
+          "path": "website works /Posters : Visual Designs/apple watch/APPLE WATCH POSTER-01.jpg",
           "type": "image",
           "name": "APPLE WATCH POSTER-01.jpg"
         }
@@ -903,66 +1031,62 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/APPLE WATCH POSTER-01.jpg",
         "type": "image",
         "name": "APPLE WATCH POSTER-01.jpg"
-      }
+      },
+      "category": "Posters : Visual Designs"
     },
     {
-      "id": "carousel/crousel/cafe render 2.png",
-      "title": "Cafe render 2",
-      "category": "crousel",
+      "id": "3D Models and Renders/cafe",
+      "folder": "cafe",
+      "title": "cafe",
       "media": [
         {
-          "path": "crousel/cafe render 2.png",
+          "path": "website works /3D Models and Renders/cafe/cafe render 2.png",
           "type": "image",
           "name": "cafe render 2.png"
+        },
+        {
+          "path": "website works /3D Models and Renders/cafe/cafe render.png",
+          "type": "image",
+          "name": "cafe render.png"
         }
       ],
       "cover": {
         "path": "crousel/cafe render 2.png",
         "type": "image",
         "name": "cafe render 2.png"
-      }
+      },
+      "category": "3D Models and Renders"
     },
     {
-      "id": "carousel/crousel/cafe render.png",
-      "title": "Cafe render",
-      "category": "crousel",
+      "id": "Posters : Visual Designs/message",
+      "folder": "message",
+      "title": "message",
       "media": [
         {
-          "path": "crousel/cafe render.png",
-          "type": "image",
-          "name": "cafe render.png"
-        }
-      ],
-      "cover": {
-        "path": "crousel/cafe render.png",
-        "type": "image",
-        "name": "cafe render.png"
-      }
-    },
-    {
-      "id": "carousel/crousel/COCKTAIL PARTY -01.png",
-      "title": "COCKTAIL PARTY 01",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/COCKTAIL PARTY -01.png",
+          "path": "website works /Posters : Visual Designs/message/COCKTAIL PARTY -01.png",
           "type": "image",
           "name": "COCKTAIL PARTY -01.png"
+        },
+        {
+          "path": "website works /Posters : Visual Designs/message/SUMMER SALE POSTER-01.png",
+          "type": "image",
+          "name": "SUMMER SALE POSTER-01.png"
         }
       ],
       "cover": {
         "path": "crousel/COCKTAIL PARTY -01.png",
         "type": "image",
         "name": "COCKTAIL PARTY -01.png"
-      }
+      },
+      "category": "Posters : Visual Designs"
     },
     {
-      "id": "carousel/crousel/COLA PREDATOR .jpg",
+      "id": "Packaging Design/COLA PREDATOR .jpg",
+      "folder": "COLA PREDATOR .jpg",
       "title": "COLA PREDATOR",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/COLA PREDATOR .jpg",
+          "path": "website works /Packaging Design/COLA PREDATOR .jpg",
           "type": "image",
           "name": "COLA PREDATOR .jpg"
         }
@@ -971,15 +1095,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/COLA PREDATOR .jpg",
         "type": "image",
         "name": "COLA PREDATOR .jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/COLA STRIKE.jpg",
+      "id": "Packaging Design/COLA STRIKE.jpg",
+      "folder": "COLA STRIKE.jpg",
       "title": "COLA STRIKE",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/COLA STRIKE.jpg",
+          "path": "website works /Packaging Design/COLA STRIKE.jpg",
           "type": "image",
           "name": "COLA STRIKE.jpg"
         }
@@ -988,15 +1113,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/COLA STRIKE.jpg",
         "type": "image",
         "name": "COLA STRIKE.jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/FLORA. .JPG",
+      "id": "Photography/FLORA. .JPG",
+      "folder": "FLORA. .JPG",
       "title": "FLORA.",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/FLORA. .JPG",
+          "path": "website works /Photography/FLORA. .JPG",
           "type": "image",
           "name": "FLORA. .JPG"
         }
@@ -1005,15 +1131,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/FLORA. .JPG",
         "type": "image",
         "name": "FLORA. .JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/FLORA.JPG",
+      "id": "Photography/FLORA.JPG",
+      "folder": "FLORA.JPG",
       "title": "FLORA",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/FLORA.JPG",
+          "path": "website works /Photography/FLORA.JPG",
           "type": "image",
           "name": "FLORA.JPG"
         }
@@ -1022,15 +1149,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/FLORA.JPG",
         "type": "image",
         "name": "FLORA.JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/LEMON PREDATOR.jpg",
+      "id": "Packaging Design/LEMON PREDATOR.jpg",
+      "folder": "LEMON PREDATOR.jpg",
       "title": "LEMON PREDATOR",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/LEMON PREDATOR.jpg",
+          "path": "website works /Packaging Design/LEMON PREDATOR.jpg",
           "type": "image",
           "name": "LEMON PREDATOR.jpg"
         }
@@ -1039,15 +1167,36 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/LEMON PREDATOR.jpg",
         "type": "image",
         "name": "LEMON PREDATOR.jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/LEMON.jpg",
-      "title": "LEMON",
-      "category": "crousel",
+      "id": "Photography/IMG_0272.heic",
+      "folder": "IMG_0272.heic",
+      "title": "IMG 0272",
       "media": [
         {
-          "path": "crousel/LEMON.jpg",
+          "path": "website works /Photography/IMG_0272.heic",
+          "type": "image",
+          "name": "IMG_0272.heic",
+          "previewPath": "portfolio-previews/a5b8220580e54ae71179d23420ad0b8f242201e4e7eeba5233ace1faab79cdb1.jpg"
+        }
+      ],
+      "cover": {
+        "path": "crousel/LEMON SPLASH.heic",
+        "type": "image",
+        "name": "LEMON SPLASH.heic",
+        "previewPath": "portfolio-previews/a5b8220580e54ae71179d23420ad0b8f242201e4e7eeba5233ace1faab79cdb1.jpg"
+      },
+      "category": "Photography"
+    },
+    {
+      "id": "Packaging Design/LEMON.jpg",
+      "folder": "LEMON.jpg",
+      "title": "LEMON",
+      "media": [
+        {
+          "path": "website works /Packaging Design/LEMON.jpg",
           "type": "image",
           "name": "LEMON.jpg"
         }
@@ -1056,15 +1205,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/LEMON.jpg",
         "type": "image",
         "name": "LEMON.jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/NIKE.png",
-      "title": "NIKE",
-      "category": "crousel",
+      "id": "Posters : Visual Designs/sneakers",
+      "folder": "sneakers",
+      "title": "sneakers",
       "media": [
         {
-          "path": "crousel/NIKE.png",
+          "path": "website works /Posters : Visual Designs/sneakers/NIKE.png",
           "type": "image",
           "name": "NIKE.png"
         }
@@ -1073,100 +1223,82 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/NIKE.png",
         "type": "image",
         "name": "NIKE.png"
-      }
+      },
+      "category": "Posters : Visual Designs"
     },
     {
-      "id": "carousel/crousel/onitsuka tiger SP.jpg",
-      "title": "Onitsuka tiger SP",
-      "category": "crousel",
+      "id": "Brand Identity : Logo/onitstuka tiger",
+      "folder": "onitstuka tiger",
+      "title": "onitstuka tiger",
       "media": [
         {
-          "path": "crousel/onitsuka tiger SP.jpg",
+          "path": "website works /Brand Identity : Logo/onitstuka tiger/onitsuka tiger SP.jpg",
           "type": "image",
           "name": "onitsuka tiger SP.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/onitstuka tiger/TIGER BADGE ORANGE POSTER_.jpg",
+          "type": "image",
+          "name": "TIGER BADGE ORANGE POSTER_.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/onitstuka tiger/tiger sneaker poster.jpg",
+          "type": "image",
+          "name": "tiger sneaker poster.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/onitstuka tiger/TIGER SNEAKER_.jpg",
+          "type": "image",
+          "name": "TIGER SNEAKER_.jpg"
         }
       ],
       "cover": {
         "path": "crousel/onitsuka tiger SP.jpg",
         "type": "image",
         "name": "onitsuka tiger SP.jpg"
-      }
+      },
+      "category": "Brand Identity : Logo"
     },
     {
-      "id": "carousel/crousel/PUMA BILLBOARD.jpg",
-      "title": "PUMA BILLBOARD",
-      "category": "crousel",
+      "id": "Brand Identity : Logo/puma speedcat",
+      "folder": "puma speedcat",
+      "title": "puma speedcat",
       "media": [
         {
-          "path": "crousel/PUMA BILLBOARD.jpg",
+          "path": "website works /Brand Identity : Logo/puma speedcat/PUMA BILLBOARD.jpg",
           "type": "image",
           "name": "PUMA BILLBOARD.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/puma speedcat/puma sneaker poster_.jpg",
+          "type": "image",
+          "name": "puma sneaker poster_.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/puma speedcat/PUMA WOMENS WEAR.jpg",
+          "type": "image",
+          "name": "PUMA WOMENS WEAR.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/puma speedcat/puma.png",
+          "type": "image",
+          "name": "puma.png"
         }
       ],
       "cover": {
         "path": "crousel/PUMA BILLBOARD.jpg",
         "type": "image",
         "name": "PUMA BILLBOARD.jpg"
-      }
+      },
+      "category": "Brand Identity : Logo"
     },
     {
-      "id": "carousel/crousel/puma sneaker poster_.jpg",
-      "title": "Puma sneaker poster",
-      "category": "crousel",
+      "id": "Brand Identity : Logo/HAVELLS",
+      "folder": "HAVELLS",
+      "title": "HAVELLS",
       "media": [
         {
-          "path": "crousel/puma sneaker poster_.jpg",
-          "type": "image",
-          "name": "puma sneaker poster_.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/puma sneaker poster_.jpg",
-        "type": "image",
-        "name": "puma sneaker poster_.jpg"
-      }
-    },
-    {
-      "id": "carousel/crousel/PUMA WOMENS WEAR.jpg",
-      "title": "PUMA WOMENS WEAR",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/PUMA WOMENS WEAR.jpg",
-          "type": "image",
-          "name": "PUMA WOMENS WEAR.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/PUMA WOMENS WEAR.jpg",
-        "type": "image",
-        "name": "PUMA WOMENS WEAR.jpg"
-      }
-    },
-    {
-      "id": "carousel/crousel/puma.png",
-      "title": "Puma",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/puma.png",
-          "type": "image",
-          "name": "puma.png"
-        }
-      ],
-      "cover": {
-        "path": "crousel/puma.png",
-        "type": "image",
-        "name": "puma.png"
-      }
-    },
-    {
-      "id": "carousel/crousel/render havells .png",
-      "title": "Render havells",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/render havells .png",
+          "path": "website works /Brand Identity : Logo/HAVELLS/render havells .png",
           "type": "image",
           "name": "render havells .png"
         }
@@ -1175,15 +1307,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/render havells .png",
         "type": "image",
         "name": "render havells .png"
-      }
+      },
+      "category": "Brand Identity : Logo"
     },
     {
-      "id": "carousel/crousel/render redtape.png",
-      "title": "Render redtape",
-      "category": "crousel",
+      "id": "Brand Identity : Logo/RED TAPE",
+      "folder": "RED TAPE",
+      "title": "RED TAPE",
       "media": [
         {
-          "path": "crousel/render redtape.png",
+          "path": "website works /Brand Identity : Logo/RED TAPE /render redtape.png",
           "type": "image",
           "name": "render redtape.png"
         }
@@ -1192,32 +1325,34 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/render redtape.png",
         "type": "image",
         "name": "render redtape.png"
-      }
+      },
+      "category": "Brand Identity : Logo"
     },
     {
-      "id": "carousel/crousel/RIM LIGHT .JPG",
-      "title": "RIM LIGHT",
-      "category": "crousel",
+      "id": "Photography/IMG_6620.JPG",
+      "folder": "IMG_6620.JPG",
+      "title": "IMG 6620",
       "media": [
         {
-          "path": "crousel/RIM LIGHT .JPG",
+          "path": "website works /Photography/IMG_6620.JPG",
           "type": "image",
-          "name": "RIM LIGHT .JPG"
+          "name": "IMG_6620.JPG"
         }
       ],
       "cover": {
         "path": "crousel/RIM LIGHT .JPG",
         "type": "image",
         "name": "RIM LIGHT .JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/RUSPBERRY PREDATOR .jpg",
+      "id": "Packaging Design/RUSPBERRY PREDATOR .jpg",
+      "folder": "RUSPBERRY PREDATOR .jpg",
       "title": "RUSPBERRY PREDATOR",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/RUSPBERRY PREDATOR .jpg",
+          "path": "website works /Packaging Design/RUSPBERRY PREDATOR .jpg",
           "type": "image",
           "name": "RUSPBERRY PREDATOR .jpg"
         }
@@ -1226,15 +1361,16 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/RUSPBERRY PREDATOR .jpg",
         "type": "image",
         "name": "RUSPBERRY PREDATOR .jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/RUSPBERRY.jpg",
+      "id": "Packaging Design/RUSPBERRY.jpg",
+      "folder": "RUSPBERRY.jpg",
       "title": "RUSPBERRY",
-      "category": "crousel",
       "media": [
         {
-          "path": "crousel/RUSPBERRY.jpg",
+          "path": "website works /Packaging Design/RUSPBERRY.jpg",
           "type": "image",
           "name": "RUSPBERRY.jpg"
         }
@@ -1243,245 +1379,223 @@ window.PORTFOLIO_MANIFEST = {
         "path": "crousel/RUSPBERRY.jpg",
         "type": "image",
         "name": "RUSPBERRY.jpg"
-      }
+      },
+      "category": "Packaging Design"
     },
     {
-      "id": "carousel/crousel/SIDE LIGHT.JPG",
-      "title": "SIDE LIGHT",
-      "category": "crousel",
+      "id": "Photography/IMG_6685 (1).JPG",
+      "folder": "IMG_6685 (1).JPG",
+      "title": "IMG 6685 (1)",
       "media": [
         {
-          "path": "crousel/SIDE LIGHT.JPG",
+          "path": "website works /Photography/IMG_6685 (1).JPG",
           "type": "image",
-          "name": "SIDE LIGHT.JPG"
+          "name": "IMG_6685 (1).JPG"
         }
       ],
       "cover": {
         "path": "crousel/SIDE LIGHT.JPG",
         "type": "image",
         "name": "SIDE LIGHT.JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/SUMMER SALE POSTER-01.png",
-      "title": "SUMMER SALE POSTER 01",
-      "category": "crousel",
+      "id": "Posters : Visual Designs/sunglasses",
+      "folder": "sunglasses",
+      "title": "sunglasses",
       "media": [
         {
-          "path": "crousel/SUMMER SALE POSTER-01.png",
-          "type": "image",
-          "name": "SUMMER SALE POSTER-01.png"
-        }
-      ],
-      "cover": {
-        "path": "crousel/SUMMER SALE POSTER-01.png",
-        "type": "image",
-        "name": "SUMMER SALE POSTER-01.png"
-      }
-    },
-    {
-      "id": "carousel/crousel/sunglasses girls 2.png",
-      "title": "Sunglasses girls 2",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/sunglasses girls 2.png",
+          "path": "website works /Posters : Visual Designs/sunglasses/sunglasses girls 2.png",
           "type": "image",
           "name": "sunglasses girls 2.png"
+        },
+        {
+          "path": "website works /Posters : Visual Designs/sunglasses/sunglasses visulas.png",
+          "type": "image",
+          "name": "sunglasses visulas.png"
+        },
+        {
+          "path": "website works /Posters : Visual Designs/sunglasses/sunglasses.png",
+          "type": "image",
+          "name": "sunglasses.png"
         }
       ],
       "cover": {
         "path": "crousel/sunglasses girls 2.png",
         "type": "image",
         "name": "sunglasses girls 2.png"
-      }
+      },
+      "category": "Posters : Visual Designs"
     },
     {
-      "id": "carousel/crousel/sunglasses visulas.png",
-      "title": "Sunglasses visulas",
-      "category": "crousel",
+      "id": "Photography/IMG_6746.jpg",
+      "folder": "IMG_6746.jpg",
+      "title": "IMG 6746",
       "media": [
         {
-          "path": "crousel/sunglasses visulas.png",
+          "path": "website works /Photography/IMG_6746.jpg",
           "type": "image",
-          "name": "sunglasses visulas.png"
-        }
-      ],
-      "cover": {
-        "path": "crousel/sunglasses visulas.png",
-        "type": "image",
-        "name": "sunglasses visulas.png"
-      }
-    },
-    {
-      "id": "carousel/crousel/sunglasses.png",
-      "title": "Sunglasses",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/sunglasses.png",
-          "type": "image",
-          "name": "sunglasses.png"
-        }
-      ],
-      "cover": {
-        "path": "crousel/sunglasses.png",
-        "type": "image",
-        "name": "sunglasses.png"
-      }
-    },
-    {
-      "id": "carousel/crousel/SYMETTERY.jpg",
-      "title": "SYMETTERY",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/SYMETTERY.jpg",
-          "type": "image",
-          "name": "SYMETTERY.jpg"
+          "name": "IMG_6746.jpg"
         }
       ],
       "cover": {
         "path": "crousel/SYMETTERY.jpg",
         "type": "image",
         "name": "SYMETTERY.jpg"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/SYMETTRY.JPG",
-      "title": "SYMETTRY",
-      "category": "crousel",
+      "id": "Photography/IMG_6764.JPG",
+      "folder": "IMG_6764.JPG",
+      "title": "IMG 6764",
       "media": [
         {
-          "path": "crousel/SYMETTRY.JPG",
+          "path": "website works /Photography/IMG_6764.JPG",
           "type": "image",
-          "name": "SYMETTRY.JPG"
+          "name": "IMG_6764.JPG"
         }
       ],
       "cover": {
         "path": "crousel/SYMETTRY.JPG",
         "type": "image",
         "name": "SYMETTRY.JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/TERETTORY.JPG",
-      "title": "TERETTORY",
-      "category": "crousel",
+      "id": "Photography/IMG_6735.JPG",
+      "folder": "IMG_6735.JPG",
+      "title": "IMG 6735",
       "media": [
         {
-          "path": "crousel/TERETTORY.JPG",
+          "path": "website works /Photography/IMG_6735.JPG",
           "type": "image",
-          "name": "TERETTORY.JPG"
+          "name": "IMG_6735.JPG"
         }
       ],
       "cover": {
         "path": "crousel/TERETTORY.JPG",
         "type": "image",
         "name": "TERETTORY.JPG"
-      }
+      },
+      "category": "Photography"
     },
     {
-      "id": "carousel/crousel/TIGER BADGE ORANGE POSTER_.jpg",
-      "title": "TIGER BADGE ORANGE POSTER",
-      "category": "crousel",
+      "id": "Brand Identity : Logo/vegas mall",
+      "folder": "vegas mall",
+      "title": "vegas mall",
       "media": [
         {
-          "path": "crousel/TIGER BADGE ORANGE POSTER_.jpg",
-          "type": "image",
-          "name": "TIGER BADGE ORANGE POSTER_.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/TIGER BADGE ORANGE POSTER_.jpg",
-        "type": "image",
-        "name": "TIGER BADGE ORANGE POSTER_.jpg"
-      }
-    },
-    {
-      "id": "carousel/crousel/tiger sneaker poster.jpg",
-      "title": "Tiger sneaker poster",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/tiger sneaker poster.jpg",
-          "type": "image",
-          "name": "tiger sneaker poster.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/tiger sneaker poster.jpg",
-        "type": "image",
-        "name": "tiger sneaker poster.jpg"
-      }
-    },
-    {
-      "id": "carousel/crousel/TIGER SNEAKER_.jpg",
-      "title": "TIGER SNEAKER",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/TIGER SNEAKER_.jpg",
-          "type": "image",
-          "name": "TIGER SNEAKER_.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/TIGER SNEAKER_.jpg",
-        "type": "image",
-        "name": "TIGER SNEAKER_.jpg"
-      }
-    },
-    {
-      "id": "carousel/crousel/VEGAS_Social_media_post_2.jpg",
-      "title": "VEGAS Social media post 2",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/VEGAS_Social_media_post_2.jpg",
+          "path": "website works /Brand Identity : Logo/vegas mall/VEGAS_Social_media_post_2.jpg",
           "type": "image",
           "name": "VEGAS_Social_media_post_2.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/vegas mall/VEGAS_Social_media_post.jpg",
+          "type": "image",
+          "name": "VEGAS_Social_media_post.jpg"
+        },
+        {
+          "path": "website works /Brand Identity : Logo/vegas mall/VEGAS_SP_new.jpg",
+          "type": "image",
+          "name": "VEGAS_SP_new.jpg"
         }
       ],
       "cover": {
         "path": "crousel/VEGAS_Social_media_post_2.jpg",
         "type": "image",
         "name": "VEGAS_Social_media_post_2.jpg"
-      }
+      },
+      "category": "Brand Identity : Logo"
     },
     {
-      "id": "carousel/crousel/VEGAS_Social_media_post.jpg",
-      "title": "VEGAS Social media post",
-      "category": "crousel",
+      "id": "Photography/IMG_0277.heic",
+      "folder": "IMG_0277.heic",
+      "title": "IMG 0277",
       "media": [
         {
-          "path": "crousel/VEGAS_Social_media_post.jpg",
+          "path": "website works /Photography/IMG_0277.heic",
           "type": "image",
-          "name": "VEGAS_Social_media_post.jpg"
+          "name": "IMG_0277.heic",
+          "previewPath": "portfolio-previews/158a73d81aced07366a533687b4b7ce4f2356451f687e8342271c5f6d0f8d95a.jpg"
         }
       ],
       "cover": {
-        "path": "crousel/VEGAS_Social_media_post.jpg",
+        "path": "crousel/WATER SPLASH GLASS .heic",
         "type": "image",
-        "name": "VEGAS_Social_media_post.jpg"
-      }
+        "name": "WATER SPLASH GLASS .heic",
+        "previewPath": "portfolio-previews/158a73d81aced07366a533687b4b7ce4f2356451f687e8342271c5f6d0f8d95a.jpg"
+      },
+      "category": "Photography"
+    }
+  ],
+  "continuityVideos": [
+    {
+      "path": "wall signautre continiuty/CNC_machine_carving_wood_patterns_20261001004054.mp4",
+      "type": "video",
+      "name": "CNC_machine_carving_wood_patterns_20261001004054.mp4"
     },
     {
-      "id": "carousel/crousel/VEGAS_SP_new.jpg",
-      "title": "VEGAS SP new",
-      "category": "crousel",
-      "media": [
-        {
-          "path": "crousel/VEGAS_SP_new.jpg",
-          "type": "image",
-          "name": "VEGAS_SP_new.jpg"
-        }
-      ],
-      "cover": {
-        "path": "crousel/VEGAS_SP_new.jpg",
-        "type": "image",
-        "name": "VEGAS_SP_new.jpg"
-      }
+      "path": "wall signautre continiuty/Creating_wooden_horse_wall_art_20260929143755.mp4",
+      "type": "video",
+      "name": "Creating_wooden_horse_wall_art_20260929143755.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/Creating_wooden_relief_sculpture…_1080p_20260929144153.mp4",
+      "type": "video",
+      "name": "Creating_wooden_relief_sculpture…_1080p_20260929144153.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_2b84fab6.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_2b84fab6.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_4ca7597e.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_4ca7597e.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_93aa2faf.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_93aa2faf.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_168cc16b.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_168cc16b.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_77154a31.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_77154a31.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_be72ad40.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_be72ad40.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/gemini_generated_video_f9a40a93.mp4",
+      "type": "video",
+      "name": "gemini_generated_video_f9a40a93.mp4"
+    },
+    {
+      "path": "wall signautre continiuty/generate_a_short_bts_video_fro 2.MP4",
+      "type": "video",
+      "name": "generate_a_short_bts_video_fro 2.MP4"
+    },
+    {
+      "path": "wall signautre continiuty/generate_a_short_bts_video_fro.MP4",
+      "type": "video",
+      "name": "generate_a_short_bts_video_fro.MP4"
+    },
+    {
+      "path": "wall signautre continiuty/WALL_SIGNATURE_Making_Process.mp4",
+      "type": "video",
+      "name": "WALL_SIGNATURE_Making_Process.mp4"
     }
   ]
 };

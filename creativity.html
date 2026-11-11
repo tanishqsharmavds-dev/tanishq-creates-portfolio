@@ -12,10 +12,7 @@
     /* Dedicated Creativity Page Styles */
     .creativity-page-body {
       background-color: #050508;
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(255, 85, 0, 0.12) 0%, transparent 45%),
-        radial-gradient(circle at 90% 40%, rgba(0, 229, 255, 0.08) 0%, transparent 50%),
-        radial-gradient(circle at 50% 85%, rgba(255, 170, 0, 0.08) 0%, transparent 55%);
+      background-image: none;
       min-height: 100vh;
       color: #ffffff;
       padding-bottom: 80px;
@@ -29,8 +26,8 @@
       width: 100%;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       background: rgba(8, 8, 12, 0.7);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -221,6 +218,150 @@
       .creativity-hero { padding: 0 20px; margin-top: 36px; }
       .section-block { padding: 0 20px; margin: 48px auto; }
     }
+
+    @media (max-width: 767px) {
+      .creativity-navbar {
+        position: sticky;
+        flex-wrap: wrap;
+        gap: 14px;
+        padding: 12px 16px;
+      }
+
+      .creativity-navbar > .brand-logo {
+        min-width: 0;
+      }
+
+      .creativity-navbar .brand-name {
+        font-size: clamp(12px, 3.8vw, 15px);
+      }
+
+      .creativity-navbar > div {
+        width: 100%;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      .btn-nav-action,
+      .creativity-navbar .btn-primary-white {
+        min-height: 44px;
+        justify-content: center;
+        padding: 10px clamp(12px, 4vw, 20px);
+      }
+
+      .creativity-hero {
+        margin-top: 32px;
+        padding-right: 18px;
+        padding-left: 18px;
+      }
+
+      .creativity-hero-title {
+        font-size: clamp(34px, 9.2vw, 54px);
+        line-height: 1.06;
+        overflow-wrap: anywhere;
+      }
+
+      .creativity-hero-desc {
+        font-size: clamp(14px, 4vw, 16px);
+      }
+
+      .portfolio-gallery-controls,
+      .section-block {
+        padding-right: 16px;
+        padding-left: 16px;
+      }
+
+      .portfolio-gallery-controls {
+        margin-top: 8px;
+      }
+
+      .gallery-filter-tabs {
+        gap: 8px;
+      }
+
+      .filter-btn {
+        max-width: 100%;
+        min-height: 40px;
+        overflow-wrap: anywhere;
+      }
+
+      .section-block {
+        margin: 42px auto;
+      }
+
+      .section-block-header {
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .block-title {
+        font-size: clamp(22px, 6vw, 28px);
+        overflow-wrap: anywhere;
+      }
+
+      .block-sub {
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      .block-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 16px;
+      }
+
+      .detail-card-media {
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+
+      .detail-card-media img {
+        object-fit: contain;
+      }
+
+      .detail-card-body {
+        padding: 18px;
+      }
+
+      .detail-item-title {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .creativity-navbar {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .creativity-navbar > div {
+        gap: 6px;
+      }
+
+      .btn-nav-action,
+      .creativity-navbar .btn-primary-white {
+        gap: 5px;
+        padding-right: 10px;
+        padding-left: 10px;
+        font-size: 12px;
+      }
+
+      .creativity-hero,
+      .portfolio-gallery-controls,
+      .section-block {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .creativity-hero-title {
+        font-size: 32px;
+      }
+
+      .detail-card-body {
+        padding: 15px;
+      }
+    }
   </style>
 </head>
 <body class="creativity-page-body">
@@ -251,7 +392,7 @@
         </svg>
         Back to Home
       </a>
-      <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-white">Hire Me</a>
+      <a href="contact.html" class="btn-primary-white">Hire Me</a>
     </div>
   </header>
 
@@ -266,14 +407,14 @@
       Executed With Precision.
     </h1>
     <p class="creativity-hero-desc">
-      Browse every project discovered in the portfolio category folders. New categories and project folders appear here after the portfolio manifest is regenerated.
+      Browse the projects and original media organized from the portfolio folders.
     </p>
   </div>
 
-  <div class="gallery-filter-tabs portfolio-page-filters" id="portfolio-category-filters" aria-label="Browse project categories">
-    <button class="filter-btn active" type="button" data-filter="all">All Categories</button>
+  <div class="portfolio-gallery-controls">
+    <div class="gallery-filter-tabs" id="portfolio-category-filters" aria-label="Filter project categories"></div>
   </div>
-  <div id="portfolio-categories" aria-live="polite"></div>
+  <div id="portfolio-categories" class="portfolio-categories" aria-live="polite"></div>
 
   <!-- SECTION 1: CAD DESIGNS -->
   <section class="section-block">
@@ -289,12 +430,12 @@
     <div class="block-grid">
       <!-- Card 1 -->
       <div class="detail-card" onclick="openProjectModal('cad-designs')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /3D Models and Renders/cafe/cafe render.png');">
           <span class="card-corner-badge">3D CNC &bull; Teakwood</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Parametric Wave Wall Panel</h3>
-          <p class="detail-item-desc">Custom relief toolpaths designed in SketchUp and carved with industrial CNC routers. Hand-finished with natural dark walnut stain.</p>
+          <h3 class="detail-item-title">Café Interior 3D Render</h3>
+          <p class="detail-item-desc">Full interior space render with accurate lighting and material simulation.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">SketchUp</span>
             <span class="badge-pill-tool">CNC Router</span>
@@ -305,12 +446,12 @@
 
       <!-- Card 2 -->
       <div class="detail-card" onclick="openProjectModal('cad-designs')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /3D Models and Renders/display stand /display stand iso.png');">
           <span class="card-corner-badge">Relief Carving</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Geometric Tessellation Mural</h3>
-          <p class="detail-item-desc">High-depth wooden carving featuring multi-level geometric pyramids and shadow play for executive corporate boardrooms.</p>
+          <h3 class="detail-item-title">Display Stand Design</h3>
+          <p class="detail-item-desc">Isometric product display stand designed in SketchUp with clean geometry.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Illustrator</span>
             <span class="badge-pill-tool">SketchUp</span>
@@ -321,12 +462,12 @@
 
       <!-- Card 3 -->
       <div class="detail-card" onclick="openProjectModal('sketchup-3d')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000001.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /3D Models and Renders/mobile stand /mobile stand.JPG');">
           <span class="card-corner-badge">Spatial Concept</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Luxury Penthouse Headboard Installation</h3>
-          <p class="detail-item-desc">Full bedroom wall installation featuring integrated warm LED backlighting and fluted CNC wood columns.</p>
+          <h3 class="detail-item-title">Mobile Phone Stand</h3>
+          <p class="detail-item-desc">Ergonomic mobile stand concept modeled in 3D with real-world dimensions.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">SketchUp</span>
             <span class="badge-pill-tool">Photoshop</span>
@@ -351,12 +492,12 @@
     <div class="block-grid">
       <!-- Card 1 -->
       <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Posters : Visual Designs/apple watch/APPLE WATCH POSTER-01.jpg');">
           <span class="card-corner-badge">Multi-Tier MDF</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">8-Layer Mandala Wall Sculpture</h3>
-          <p class="detail-item-desc">Precision laser-cut MDF layers stacked to create profound three-dimensional depth, coated in matte obsidian and metallic gold.</p>
+          <h3 class="detail-item-title">Apple Watch Product Poster</h3>
+          <p class="detail-item-desc">Bold product advertisement poster for Apple Watch featuring cinematic composition.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">CorelDraw</span>
             <span class="badge-pill-tool">Laser CNC</span>
@@ -367,12 +508,12 @@
 
       <!-- Card 2 -->
       <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Posters : Visual Designs/sneakers/PUMA BILLBOARD.jpg');">
           <span class="card-corner-badge">Resin Inlay</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Emerald River Resin Wall Art</h3>
-          <p class="detail-item-desc">Live-edge timber and laser-etched MDF channels filled with multi-pour metallic emerald green and gold resin.</p>
+          <h3 class="detail-item-title">Puma Billboard Campaign</h3>
+          <p class="detail-item-desc">Large-format billboard design for Puma footwear with strong visual hierarchy.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Resin Art</span>
             <span class="badge-pill-tool">Epoxy</span>
@@ -383,12 +524,12 @@
 
       <!-- Card 3 -->
       <div class="detail-card" onclick="openProjectModal('laser-cut-mdf')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Posters : Visual Designs/sunglasses/sunglasses.png');">
           <span class="card-corner-badge">Modern Mirror Art</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Reflective Geometric Wall Medallion</h3>
-          <p class="detail-item-desc">Laser cut acrylic mirror facets interlocked with textured MDF borders, creating striking light reflections.</p>
+          <h3 class="detail-item-title">Sunglasses Visual Campaign</h3>
+          <p class="detail-item-desc">Editorial sunglasses photography and visual storytelling for lifestyle branding.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">CorelDraw</span>
             <span class="badge-pill-tool">Acrylic Mirror</span>
@@ -413,12 +554,12 @@
     <div class="block-grid">
       <!-- Card 1 -->
       <div class="detail-card" onclick="openProjectModal('brand-identity')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000180.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Social Issues/domestic violence /social issue.png');">
           <span class="card-corner-badge">Identity &bull; Logo</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Brand Identity Master System</h3>
-          <p class="detail-item-desc">Comprehensive brand identity: custom geometric serif wordmark, monogram icon, metallic color palette, and corporate stationery.</p>
+          <h3 class="detail-item-title">Domestic Violence Awareness</h3>
+          <p class="detail-item-desc">Visual campaign raising awareness about domestic violence through powerful imagery.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Illustrator</span>
             <span class="badge-pill-tool">InDesign</span>
@@ -429,12 +570,12 @@
 
       <!-- Card 2 -->
       <div class="detail-card" onclick="openProjectModal('brand-identity')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Social Issues/domestic violence /social issue 3.png');">
           <span class="card-corner-badge">Corporate Collateral</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Executive Stationery &amp; Letterhead System</h3>
-          <p class="detail-item-desc">Luxury stationery suite including premium textured cotton business cards, foiled letterheads, and presentation folders.</p>
+          <h3 class="detail-item-title">Stop The Silence</h3>
+          <p class="detail-item-desc">Editorial illustration campaign on the importance of speaking out against violence.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Photoshop</span>
             <span class="badge-pill-tool">Illustrator</span>
@@ -445,12 +586,12 @@
 
       <!-- Card 3 -->
       <div class="detail-card" onclick="openProjectModal('social-campaigns')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000200.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Social Issues/domestic violence /social issue 4.png');">
           <span class="card-corner-badge">Brand Guidelines</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Design Guidelines &amp; Typography Book</h3>
-          <p class="detail-item-desc">A 40-page comprehensive brand rulebook covering spacing, digital color profiles, dark mode palettes, and icon grids.</p>
+          <h3 class="detail-item-title">She Deserves Better</h3>
+          <p class="detail-item-desc">Advocacy poster series designed to spark conversation and social change.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">InDesign</span>
             <span class="badge-pill-tool">Typography</span>
@@ -475,12 +616,12 @@
     <div class="block-grid">
       <!-- Card 1 -->
       <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000100.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Photography/FLORA.JPG');">
           <span class="card-corner-badge">Rigid Box</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Premium Collector's Packaging</h3>
-          <p class="detail-item-desc">Heavyweight rigid presentation box with hidden magnetic clasp, matte velvet finish, and embossed copper foil typography.</p>
+          <h3 class="detail-item-title">Flora — Botanical Photography</h3>
+          <p class="detail-item-desc">Macro nature photography with shallow depth of field and natural light.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Illustrator</span>
             <span class="badge-pill-tool">CorelDraw</span>
@@ -491,12 +632,12 @@
 
       <!-- Card 2 -->
       <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000051.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Photography/RIM LIGHT .JPG');">
           <span class="card-corner-badge">Luxury Mailer</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Direct-To-Consumer Safe Artwork Crates</h3>
-          <p class="detail-item-desc">Reinforced courier packaging system with custom shock-absorbing foam inserts for global shipping of delicate 3D wood sculptures.</p>
+          <h3 class="detail-item-title">Rim Light Portrait</h3>
+          <p class="detail-item-desc">Studio photography experiment with dramatic rim lighting and subject contrast.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Industrial CAD</span>
             <span class="badge-pill-tool">Illustrator</span>
@@ -507,12 +648,12 @@
 
       <!-- Card 3 -->
       <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
-        <div class="detail-card-media" style="background-image: url('video_frames_24fps/frame_000150.jpg');">
+        <div class="detail-card-media" style="background-image: url('website works /Photography/SYMETTRY.JPG');">
           <span class="card-corner-badge">Embossed Print</span>
         </div>
         <div class="detail-card-body">
-          <h3 class="detail-item-title">Certificate of Authenticity &amp; Wax Seal Suite</h3>
-          <p class="detail-item-desc">Numbered certificates printed on heavy linen cardstock with gold foil security borders and personalized wax seal stamps.</p>
+          <h3 class="detail-item-title">Symmetry Study</h3>
+          <p class="detail-item-desc">Abstract architectural and geometric photography exploring visual balance.</p>
           <div class="detail-tools-row">
             <span class="badge-pill-tool">Photoshop</span>
             <span class="badge-pill-tool">Foil Stamp</span>
@@ -520,6 +661,140 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- SECTION 5: BRAND IDENTITY / LOGO -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">05 &bull; BRANDING &amp; IDENTITY</span>
+        <h2 class="block-title">Brand Identity / Logo</h2>
+        <p class="block-sub">Strategic logomarks, brand systems and visual identity design for major brands.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Start Brand Project</a>
+    </div>
+    <div class="block-grid">
+      <!-- Card 1 -->
+      <div class="detail-card" onclick="openProjectModal('brand-identity')">
+        <div class="detail-card-media" style="background-image: url('website works /Brand Identity : Logo/HAVELLS/render havells .png');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Havells Brand Render</h3>
+          <p class="detail-item-desc">3D brand visualization and product render for Havells — integrating product photography with motion-inspired design.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Illustrator</span><span class="badge-pill-tool">Photoshop</span></div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="detail-card" onclick="openProjectModal('brand-identity')">
+        <div class="detail-card-media" style="background-image: url('website works /Brand Identity : Logo/puma speedcat/PUMA WOMENS WEAR.jpg');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Puma Women's Wear Campaign</h3>
+          <p class="detail-item-desc">Fashion-forward brand campaign for Puma Women's Wear featuring bold typography and lifestyle photography.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Photoshop</span><span class="badge-pill-tool">Illustrator</span></div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="detail-card" onclick="openProjectModal('brand-identity')">
+        <div class="detail-card-media" style="background-image: url('website works /Brand Identity : Logo/vegas mall/VEGAS_SP_new.jpg');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Vegas Mall Social Campaign</h3>
+          <p class="detail-item-desc">Complete social media brand identity design for Vegas Mall including promotional posts, story templates and event banners.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Illustrator</span><span class="badge-pill-tool">Canva</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 6: PACKAGING DESIGN -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">06 &bull; PACKAGING &amp; PRINT</span>
+        <h2 class="block-title">Packaging Design</h2>
+        <p class="block-sub">Label design, product packaging and commercial print materials for consumer brands.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Packaging Brief</a>
+    </div>
+    <div class="block-grid">
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('website works /Packaging Design/3 FLAVOURS LABEL DESIGN.jpg');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">3 Flavours Label Design</h3>
+          <p class="detail-item-desc">Complete product label design system across 3 flavour variants with consistent brand language.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Illustrator</span><span class="badge-pill-tool">CorelDraw</span></div>
+        </div>
+      </div>
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('website works /Packaging Design/COLA PREDATOR .jpg');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Cola Predator</h3>
+          <p class="detail-item-desc">Bold, high-energy beverage label design for Cola Predator with aggressive visual identity.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Photoshop</span><span class="badge-pill-tool">Illustrator</span></div>
+        </div>
+      </div>
+      <div class="detail-card" onclick="openProjectModal('luxury-packaging')">
+        <div class="detail-card-media" style="background-image: url('website works /Packaging Design/LEMON PREDATOR.jpg');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Lemon Predator</h3>
+          <p class="detail-item-desc">Citrus-themed variant with vivid colour gradients and punchy label typography.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">Photoshop</span><span class="badge-pill-tool">Illustrator</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 7: 3D MODELS & RENDERS -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">07 &bull; 3D VISUALIZATION</span>
+        <h2 class="block-title">3D Models &amp; Renders</h2>
+        <p class="block-sub">SketchUp modelling, spatial visualization and high-quality 3D product renders.</p>
+      </div>
+      <a href="contact.html" class="btn-primary-orange" style="padding:10px 22px; font-size:13px;">Commission 3D Work</a>
+    </div>
+    <div class="block-grid">
+      <div class="detail-card" onclick="openProjectModal('sketchup-3d')">
+        <div class="detail-card-media" style="background-image: url('website works /3d mmodels/cafe render.png');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">Café Interior Render</h3>
+          <p class="detail-item-desc">Detailed interior visualization of a modern café space with realistic materials and lighting.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">SketchUp</span><span class="badge-pill-tool">Photoshop</span></div>
+        </div>
+      </div>
+      <div class="detail-card" onclick="openProjectModal('sketchup-3d')">
+        <div class="detail-card-media" style="background-image: url('website works /3d mmodels/Screenshot 2025-04-21 at 8.17.54 PM.png');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">3D Product Study I</h3>
+          <p class="detail-item-desc">Geometric product modelling study exploring form, proportion and spatial relationships.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">SketchUp</span></div>
+        </div>
+      </div>
+      <div class="detail-card" onclick="openProjectModal('sketchup-3d')">
+        <div class="detail-card-media" style="background-image: url('website works /3d mmodels/Screenshot 2025-04-21 at 8.18.59 PM.png');"></div>
+        <div class="detail-card-body">
+          <h3 class="detail-item-title">3D Product Study II</h3>
+          <p class="detail-item-desc">Further exploration of 3D modelling techniques with focus on clean geometry and render quality.</p>
+          <div class="detail-tools-row"><span class="badge-pill-tool">SketchUp</span><span class="badge-pill-tool">V-Ray Concept</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 8: MAGAZINE DESIGN -->
+  <section class="section-block">
+    <div class="section-block-header">
+      <div class="block-header-left">
+        <span class="block-num-tag">08 &bull; EDITORIAL DESIGN</span>
+        <h2 class="block-title">Magazine Design</h2>
+        <p class="block-sub">Editorial layouts, magazine spreads and typographic compositions coming soon.</p>
+      </div>
+    </div>
+    <div style="text-align:center; padding: 80px 32px; border: 1px dashed rgba(255,170,0,0.3); border-radius: 20px; color: rgba(255,255,255,0.4);">
+      <div style="font-size: 48px; margin-bottom: 20px; opacity: 0.5;">📰</div>
+      <p style="font-size: 16px; letter-spacing: 0.05em;">Magazine Design projects will be added here soon.</p>
+      <p style="font-size: 13px; margin-top: 8px;">Currently in production — check back shortly.</p>
     </div>
   </section>
 
@@ -531,7 +806,7 @@
         <p class="cta-sub-muted">Whether it's a bespoke 3D CNC wall piece, branding overhaul, or custom packaging, let's create it together.</p>
       </div>
       <div style="display:flex; gap:14px; flex-wrap:wrap;">
-        <a href="https://wa.me/917011352862?text=Hi%20Tanishq%21%20I%20visited%20your%20portfolio%20and%20I%27m%20interested%20in%20discussing%20a%20potential%20opportunity%20with%20you." class="btn-primary-orange">Hire Tanishq</a>
+        <a href="contact.html" class="btn-primary-orange">Hire Tanishq</a>
         <a href="index.html" class="btn-secondary-close">Return to Main Site</a>
       </div>
     </div>
@@ -539,13 +814,12 @@
 
   <!-- Shared Project Modal -->
   <div id="project-modal" class="project-modal-backdrop" onclick="closeProjectModal(event)">
-    <div class="project-modal-dialog">
+    <div class="project-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1">
       <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
       <div class="modal-header-image" id="modal-img">
         <span class="modal-tag" id="modal-tag">PROJECT SPOTLIGHT</span>
       </div>
       <div class="modal-body-content">
-        <button type="button" class="modal-back-btn" id="modal-back-btn" onclick="closeProjectModal()" hidden></button>
         <h2 class="modal-title" id="modal-title">Project Title</h2>
         <span class="modal-category" id="modal-cat">Category</span>
         <p class="modal-description" id="modal-desc">Detailed project description goes here.</p>
@@ -576,5 +850,6 @@
 
   <script src="portfolio-manifest.js"></script>
   <script src="script.js"></script>
+  <script src="heading-reveal.js"></script>
 </body>
 </html>

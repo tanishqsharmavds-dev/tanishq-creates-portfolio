@@ -3,138 +3,434 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="WALL SIGNATURE — a visual archive of sculptural wooden wall decor, layered MDF art, product design, and the making process.">
-  <title>WALL SIGNATURE — Art for the Wall</title>
+  <title>WALL SIGNATURE — Luxury Indian Wall Art &amp; Décor</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #050508; color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+
+    /* NAVBAR */
+    .ws-navbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(5,5,8,0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: none;
+      gap: 20px;
+    }
+    .ws-back-btn {
+      display: flex; align-items: center; gap: 8px;
+      color: #fff; text-decoration: none; font-size: 13px; font-weight: 600;
+      opacity: 0.75; transition: opacity 0.2s;
+    }
+    .ws-back-btn:hover { opacity: 1; }
+    .ws-brand { display: flex; flex-direction: column; align-items: center; gap: 2px; }
+    .ws-brand-name { font-size: 18px; font-weight: 800; letter-spacing: 0.1em; color: #ffaa00; }
+    .ws-brand-tag { font-size: 10px; letter-spacing: 0.15em; color: rgba(255,255,255,0.5); text-transform: uppercase; }
+
+    /* HERO */
+    .ws-hero {
+      min-height: 70vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: 80px 32px;
+      background: radial-gradient(ellipse at 50% 50%, rgba(255,85,0,0.1) 0%, transparent 60%);
+    }
+    .ws-hero-eyebrow { font-size: 11px; letter-spacing: 0.2em; color: #ffaa00; font-weight: 700; display: block; margin-bottom: 24px; }
+    .ws-hero-title { font-size: clamp(72px, 14vw, 180px); font-weight: 800; letter-spacing: -0.03em; line-height: 0.9; margin-bottom: 32px; }
+    .ws-hero-title em { font-family: 'Instrument Serif', serif; font-style: italic; color: #ffaa00; }
+    .ws-hero-desc { font-size: 18px; color: rgba(255,255,255,0.65); max-width: 600px; margin: 0 auto; line-height: 1.65; }
+
+    /* SECTIONS */
+    .ws-section { padding: 80px 0; }
+    .ws-section-inner { max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    .ws-section-label { font-size: 11px; font-weight: 800; letter-spacing: 0.2em; color: #ffaa00; text-transform: uppercase; margin-bottom: 32px; }
+
+    /* FILM GRID */
+    .ws-film-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 16px; }
+    .ws-film-item { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; background: #0a0a0f; }
+    .ws-film-item:first-child { grid-column: 1 / -1; }
+    .ws-film-item video { width: 100%; height: 100%; object-fit: cover; }
+    .ws-film-label { position: absolute; bottom: 12px; left: 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; background: rgba(0,0,0,0.6); padding: 4px 10px; border-radius: 6px; color: #ffaa00; }
+
+    /* GALLERY GRIDS */
+    .ws-masonry-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .ws-masonry-grid .ws-img-card:first-child { grid-row: span 2; }
+    .ws-two-col { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
+    .ws-full-img { width: 100%; max-height: 70vh; object-fit: cover; border-radius: 16px; }
+    .ws-centered-img { display: block; max-width: 900px; margin: 0 auto; width: 100%; border-radius: 16px; }
+
+    .ws-img-card {
+      position: relative; border-radius: 16px; overflow: hidden;
+      background: #0a0a0f; cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .ws-img-card:hover { transform: scale(1.02); box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+    .ws-img-card img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 280px; }
+    .ws-masonry-grid .ws-img-card:first-child img { min-height: 580px; }
+    .ws-img-overlay {
+      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%);
+      display: flex; align-items: flex-end; padding: 16px;
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .ws-img-card:hover .ws-img-overlay { opacity: 1; }
+    .ws-img-overlay span { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; color: #ffaa00; text-transform: uppercase; }
+
+    /* SECTION HEADERS */
+    .ws-section-header { margin-bottom: 40px; }
+    .ws-section-title { font-size: clamp(28px, 4vw, 48px); font-weight: 800; letter-spacing: -0.02em; }
+    .ws-section-title span { color: #ffaa00; }
+
+    /* CTA */
+    .ws-cta-section { padding: 100px 32px; text-align: center; background: rgba(255,85,0,0.05); }
+    .ws-cta-inner { max-width: 600px; margin: 0 auto; }
+    .ws-cta-inner h2 { font-size: clamp(32px,5vw,56px); font-weight: 800; margin-bottom: 20px; letter-spacing: -0.02em; }
+    .ws-cta-inner p { color: rgba(255,255,255,0.6); margin-bottom: 36px; font-size: 17px; }
+    .ws-back-link { display: inline-block; margin-top: 20px; color: rgba(255,255,255,0.4); font-size: 13px; text-decoration: none; transition: color 0.2s; }
+    .ws-back-link:hover { color: #fff; }
+
+    /* FOOTER */
+    .ws-footer { text-align: center; padding: 40px; border-top: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); font-size: 12px; letter-spacing: 0.08em; }
+
+    .ws-reveal { opacity: 1; transform: none; transition: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) { .ws-masonry-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 768px) {
+      .ws-navbar { padding: 14px 20px; flex-wrap: wrap; }
+      .ws-section-inner { padding: 0 20px; }
+      .ws-hero { min-height: 50vh; padding: 60px 20px; }
+      .ws-film-grid { grid-template-columns: 1fr; }
+      .ws-film-item:first-child { grid-column: auto; }
+      .ws-masonry-grid { grid-template-columns: 1fr; }
+      .ws-masonry-grid .ws-img-card:first-child { grid-row: span 1; }
+      .ws-masonry-grid .ws-img-card:first-child img { min-height: 280px; }
+      .ws-two-col { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 1024px) {
+      .ws-section-inner { padding-right: clamp(24px, 4vw, 40px); padding-left: clamp(24px, 4vw, 40px); }
+      .ws-hero { padding-right: clamp(24px, 4vw, 40px); padding-left: clamp(24px, 4vw, 40px); }
+      .ws-hero-desc { max-width: 620px; }
+      .ws-img-card { min-width: 0; }
+      .ws-img-card img { max-width: 100%; }
+      .ws-cta-section { padding: 84px 28px; }
+    }
+
+    @media (max-width: 767px) {
+      .ws-navbar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 12px 16px;
+        padding: 12px 18px;
+      }
+
+      .ws-back-btn {
+        min-height: 44px;
+        grid-column: 1;
+        grid-row: 2;
+        font-size: 12px;
+      }
+
+      .ws-brand {
+        grid-column: 1 / -1;
+        grid-row: 1;
+      }
+
+      .ws-brand-name { font-size: clamp(15px, 4.5vw, 18px); }
+      .ws-brand-tag { font-size: 9px; }
+
+      .ws-navbar > .btn-primary-orange {
+        min-height: 44px;
+        grid-column: 2;
+        grid-row: 2;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 9px 12px !important;
+        font-size: 11px !important;
+        white-space: nowrap;
+      }
+
+      .ws-hero {
+        min-height: 0;
+        padding: 76px 20px 68px;
+      }
+
+      .ws-hero-eyebrow { font-size: 10px; margin-bottom: 18px; }
+
+      .ws-hero h1.ws-hero-title {
+        font-size: clamp(40px, 12.5vw, 72px);
+        line-height: 0.96;
+        letter-spacing: -0.045em;
+        margin-bottom: 22px;
+        overflow-wrap: anywhere;
+      }
+
+      .ws-hero-desc {
+        max-width: 560px;
+        font-size: clamp(14px, 4vw, 16px);
+        line-height: 1.65;
+      }
+
+      .ws-section { padding: 54px 0; }
+      .ws-section-inner { padding-right: 18px; padding-left: 18px; }
+      .ws-section-label { margin-bottom: 22px; font-size: 10px; }
+      .ws-section-header { margin-bottom: 24px; }
+      .ws-section-title { font-size: clamp(27px, 7.5vw, 40px); }
+
+      .ws-film-grid,
+      .ws-masonry-grid,
+      .ws-two-col {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .ws-film-item,
+      .ws-film-item:first-child {
+        grid-column: auto;
+        aspect-ratio: 16 / 9;
+      }
+
+      .ws-img-card {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+
+      .ws-img-card img,
+      .ws-masonry-grid .ws-img-card:first-child img {
+        width: 100%;
+        height: 100%;
+        min-height: 0;
+        object-fit: contain;
+      }
+
+      .ws-img-overlay,
+      .ws-img-card:hover .ws-img-overlay {
+        padding: 12px;
+        opacity: 1;
+      }
+
+      .ws-full-img,
+      .ws-centered-img {
+        max-height: 70svh;
+        object-fit: contain;
+      }
+
+      .ws-cta-section { padding: 68px 20px; }
+      .ws-cta-inner h2 { font-size: clamp(30px, 8vw, 44px); }
+      .ws-cta-inner p { font-size: 15px; line-height: 1.6; }
+      .ws-footer { padding: 28px 16px; font-size: 10px; line-height: 1.6; }
+    }
+
+    @media (max-width: 359px) {
+      .ws-navbar { padding-right: 12px; padding-left: 12px; gap: 10px 8px; }
+      .ws-back-btn { font-size: 11px; }
+      .ws-navbar > .btn-primary-orange { padding-right: 9px !important; padding-left: 9px !important; }
+      .ws-section-inner { padding-right: 14px; padding-left: 14px; }
+      .ws-hero { padding-right: 16px; padding-left: 16px; }
+      .ws-hero h1.ws-hero-title { font-size: 39px; }
+      .ws-img-card { aspect-ratio: 1 / 1; }
+    }
+  </style>
 </head>
-<body class="ws-page">
-  <header class="ws-topbar">
-    <a class="ws-back-link" href="index.html">
-      <span aria-hidden="true">&larr;</span>
-      <span>BACK TO PORTFOLIO</span>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="ws-navbar">
+    <a href="index.html" class="ws-back-btn">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Back to Portfolio
     </a>
-    <span class="ws-topbar-note">A WALL SIGNATURE VISUAL ARCHIVE</span>
+    <div class="ws-brand">
+      <span class="ws-brand-name">WALL SIGNATURE</span>
+      <span class="ws-brand-tag">Luxury Wall Art &amp; Décor</span>
+    </div>
+    <a href="contact.html" class="btn-primary-orange" style="font-size:13px;padding:9px 20px;">Commission a Piece</a>
   </header>
 
-  <main class="ws-main">
-    <section class="ws-hero" aria-labelledby="ws-title">
-      <div class="ws-hero-copy">
-        <p class="ws-eyebrow">OBJECTS WITH PRESENCE</p>
-        <h1 id="ws-title">Art made to<br><em>live on your walls.</em></h1>
-        <p class="ws-intro">
-          Sculptural wood, layered detail, and considered forms for spaces with character.
-        </p>
-        <a class="ws-scroll-link" href="#collection">EXPLORE THE COLLECTION <span aria-hidden="true">&darr;</span></a>
-      </div>
-      <div class="ws-logo-frame">
-        <img
-          src="logo.jpg"
-          alt="WALL SIGNATURE brand logo"
-          width="1024"
-          height="535"
-          fetchpriority="high">
-      </div>
-    </section>
+  <section class="ws-section ws-film-section">
+    <div class="ws-section-inner">
+      <div class="ws-section-label">WALL SIGNATURE · BRAND FILM</div>
+      <div class="ws-film-grid" id="ws-feature-film" aria-label="WALL SIGNATURE featured video"></div>
+    </div>
+  </section>
 
-    <section class="ws-collection" id="collection" aria-labelledby="ws-collection-title">
-      <div class="ws-section-heading">
-        <div>
-          <p class="ws-eyebrow">THE VISUAL ARCHIVE</p>
-          <h2 id="ws-collection-title">Made to be seen.</h2>
+  <!-- HERO -->
+  <section class="ws-hero">
+    <div class="ws-hero-inner">
+      <span class="ws-hero-eyebrow">FEATURED BRAND · NOIDA, INDIA</span>
+      <h1 class="ws-hero-title">WALL<br><em>SIGNATURE</em></h1>
+      <p class="ws-hero-desc">Handcrafted luxury wall art — from multi-layered MDF mandalas and CNC-carved wooden masterpieces to laser-cut sculptures and Vastu-inspired decor. Every piece tells a story of precision and artistry.</p>
+    </div>
+  </section>
+
+  <!-- GALLERY: MANDALA WALL ART -->
+  <section class="ws-section">
+    <div class="ws-section-inner">
+      <div class="ws-section-header ws-reveal">
+        <div class="ws-section-label">GALLERY · 01</div>
+        <h2 class="ws-section-title">Mandala <span>Wall Art</span></h2>
+      </div>
+      <div class="ws-masonry-grid">
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala.jpeg" alt="Mandala Wall Art — Featured" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
         </div>
-        <p class="ws-heading-note">A collection of form, material, and craft.</p>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 1.jpeg" alt="Mandala Wall Art 1" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 2.jpeg" alt="Mandala Wall Art 2" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 3.jpeg" alt="Mandala Wall Art 3" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 4.jpeg" alt="Mandala Wall Art 4" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 5.jpeg" alt="Mandala Wall Art 5" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/mandala 6.jpeg" alt="Mandala Wall Art 6" loading="lazy">
+          <div class="ws-img-overlay"><span>Mandala Wall Art</span></div>
+        </div>
       </div>
+    </div>
+  </section>
 
-      <div class="ws-gallery">
-        <article class="ws-card ws-card--wide">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a photograph of multi-layer MDF mandala wall art.">
-            <span class="ws-placeholder-number">01</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with multi-layer MDF mandala photography</span>
-          </figure>
-          <div class="ws-card-caption"><span>WALL ART</span><h3>Layered mandalas</h3></div>
-        </article>
-
-        <article class="ws-card ws-card--tall">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a CNC-cut wooden artwork photograph.">
-            <span class="ws-placeholder-number">02</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with CNC-cut wooden artwork</span>
-          </figure>
-          <div class="ws-card-caption"><span>CNC WORK</span><h3>Carved in wood</h3></div>
-        </article>
-
-        <article class="ws-card">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a laser-cut MDF design photograph.">
-            <span class="ws-placeholder-number">03</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with laser-cut MDF design</span>
-          </figure>
-          <div class="ws-card-caption"><span>LASER CUTTING</span><h3>Precision in layers</h3></div>
-        </article>
-
-        <article class="ws-card">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a 3D wooden wall decor product photograph.">
-            <span class="ws-placeholder-number">04</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with 3D wooden wall decor</span>
-          </figure>
-          <div class="ws-card-caption"><span>SCULPTURAL FORM</span><h3>Depth &amp; dimension</h3></div>
-        </article>
-
-        <article class="ws-card">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a Vastu-inspired product photograph.">
-            <span class="ws-placeholder-number">05</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with Vastu-inspired product</span>
-          </figure>
-          <div class="ws-card-caption"><span>VASTU INSPIRED</span><h3>Meaningful forms</h3></div>
-        </article>
-
-        <article class="ws-card ws-card--wide">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a product mockup or interior decor installation photograph.">
-            <span class="ws-placeholder-number">06</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with a product mockup or interior installation</span>
-          </figure>
-          <div class="ws-card-caption"><span>PRODUCT DESIGN</span><h3>Art in its setting</h3></div>
-        </article>
-
-        <article class="ws-card ws-card--tall">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with WALL SIGNATURE brand identity and packaging photography.">
-            <span class="ws-placeholder-number">07</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with brand identity and packaging</span>
-          </figure>
-          <div class="ws-card-caption"><span>BRAND &amp; PACKAGING</span><h3>The details around it</h3></div>
-        </article>
-
-        <article class="ws-card">
-          <figure class="ws-placeholder" role="img" aria-label="Image placeholder. Replace with a behind-the-scenes manufacturing photograph.">
-            <span class="ws-placeholder-number">08</span>
-            <span class="ws-placeholder-mark" aria-hidden="true">+</span>
-            <span class="ws-placeholder-label">IMAGE PLACEHOLDER</span>
-            <span class="ws-placeholder-detail">Replace with behind-the-scenes manufacturing</span>
-          </figure>
-          <div class="ws-card-caption"><span>IN THE WORKSHOP</span><h3>Made by hand &amp; machine</h3></div>
-        </article>
+  <section class="ws-section" id="ws-reveal-gallery" hidden>
+    <div class="ws-section-inner">
+      <div class="ws-section-header">
+        <div class="ws-section-label">GALLERY · 05</div>
+        <h2 class="ws-section-title">Brand <span>Reveal</span></h2>
       </div>
-    </section>
-  </main>
+      <div class="ws-masonry-grid" id="ws-reveal-images"></div>
+    </div>
+  </section>
+
+  <!-- GALLERY: CNC WORK -->
+  <section class="ws-section">
+    <div class="ws-section-inner">
+      <div class="ws-section-header ws-reveal">
+        <div class="ws-section-label">GALLERY · 02</div>
+        <h2 class="ws-section-title">CNC <span>Work</span></h2>
+      </div>
+      <div class="ws-two-col">
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/cnc design.jpeg" alt="CNC Design" loading="lazy">
+          <div class="ws-img-overlay"><span>CNC Design</span></div>
+        </div>
+        <div class="ws-img-card ws-reveal">
+          <img src="wall signature/cnc watch.jpeg" alt="CNC Watch Art" loading="lazy">
+          <div class="ws-img-overlay"><span>CNC Watch Art</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY: LASER CUTTING -->
+  <section class="ws-section">
+    <div class="ws-section-inner">
+      <div class="ws-section-header ws-reveal">
+        <div class="ws-section-label">GALLERY · 03</div>
+        <h2 class="ws-section-title">Laser <span>Cutting</span></h2>
+      </div>
+      <div class="ws-reveal">
+        <img src="wall signature/laser cut 2d .jpeg" alt="Laser Cut 2D Wall Art" loading="lazy" class="ws-full-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY: LAYERED ART -->
+  <section class="ws-section">
+    <div class="ws-section-inner">
+      <div class="ws-section-header ws-reveal">
+        <div class="ws-section-label">GALLERY · 04</div>
+        <h2 class="ws-section-title">Layered <span>Art</span></h2>
+      </div>
+      <div class="ws-reveal">
+        <img src="wall signature/lakshmi maa layered.PNG" alt="Lakshmi Maa Layered Wall Art" loading="lazy" class="ws-centered-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FOOTER -->
+  <section class="ws-cta-section">
+    <div class="ws-cta-inner">
+      <h2>Commission a Custom Piece</h2>
+      <p>Each artwork is uniquely crafted to your vision. Contact us to begin.</p>
+      <a href="contact.html" class="btn-primary-orange">Start Your Commission</a>
+      <a href="index.html" class="ws-back-link">← Return to Portfolio</a>
+    </div>
+  </section>
 
   <footer class="ws-footer">
-    <a class="ws-back-link" href="index.html"><span aria-hidden="true">&larr;</span><span>BACK TO PORTFOLIO</span></a>
-    <span>WALL SIGNATURE</span>
+    <span>© 2026 WALL SIGNATURE · Tanishq Sharma · Noida, India</span>
   </footer>
+
+  <script src="portfolio-manifest.js"></script>
+  <script>
+    (() => {
+      const featureGrid = document.getElementById('ws-feature-film');
+      const processVideo = window.PORTFOLIO_MANIFEST?.continuityVideos?.find(
+        media => media.name === 'WALL_SIGNATURE_Making_Process.mp4'
+      );
+      const poster = 'wall%20signature/cnc%20design.jpeg';
+      const localUrl = path => path.split('/').map(encodeURIComponent).join('/');
+
+      if (!processVideo) {
+        console.error('WALL SIGNATURE combined process video is missing from the portfolio manifest.');
+      } else {
+        const item = document.createElement('div');
+        item.className = 'ws-film-item';
+        const video = document.createElement('video');
+        video.src = localUrl(processVideo.path);
+        video.poster = poster;
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+        video.preload = 'metadata';
+        video.setAttribute('aria-label', 'WALL SIGNATURE making-process film');
+        video.addEventListener('error', () => {
+          console.error(`Unable to load WALL SIGNATURE process video: ${processVideo.path}`);
+        }, { once: true });
+        item.append(video);
+        featureGrid.append(item);
+        video.play().catch(error => {
+          console.warn('WALL SIGNATURE process video autoplay was blocked by the browser.', error);
+        });
+      }
+
+      const wallCategory = window.PORTFOLIO_MANIFEST?.categories.find(category => category.id === 'WALL SIGNATURE');
+      const wallProject = wallCategory?.projects[0];
+      const revealMedia = wallProject?.media.filter(media => media.path.startsWith('wall signautre reveal/')) || [];
+      const revealSection = document.getElementById('ws-reveal-gallery');
+      const revealGrid = document.getElementById('ws-reveal-images');
+      revealMedia.forEach(media => {
+        const card = document.createElement('div');
+        card.className = 'ws-img-card';
+        const image = document.createElement('img');
+        image.src = localUrl(media.previewPath || media.path);
+        image.alt = 'WALL SIGNATURE brand reveal artwork';
+        image.loading = 'lazy';
+        image.decoding = 'async';
+        card.append(image);
+        revealGrid.append(card);
+      });
+      revealSection.hidden = revealMedia.length === 0;
+    })();
+  </script>
+  <script src="heading-reveal.js"></script>
+
 </body>
 </html>

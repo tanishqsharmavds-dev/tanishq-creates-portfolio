@@ -315,6 +315,130 @@
       .contact-main-container { grid-template-columns: 1fr; gap: 32px; }
       .form-row { grid-template-columns: 1fr; }
     }
+
+    @media (max-width: 767px) {
+      .contact-navbar {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 12px 18px;
+      }
+
+      .contact-navbar .brand-logo {
+        min-width: 0;
+      }
+
+      .contact-navbar .brand-name {
+        font-size: clamp(12px, 3.8vw, 15px);
+      }
+
+      .contact-navbar .btn-back {
+        min-height: 44px;
+        gap: 6px;
+        margin-left: auto;
+        padding: 9px 12px;
+      }
+
+      .contact-main-container {
+        width: 100%;
+        margin-top: 26px;
+        padding-right: 18px;
+        padding-left: 18px;
+        gap: 20px;
+      }
+
+      .contact-info-panel,
+      .contact-form-panel {
+        padding: clamp(20px, 6vw, 30px);
+        border-radius: 20px;
+      }
+
+      .contact-heading {
+        font-size: clamp(30px, 8vw, 38px);
+        overflow-wrap: anywhere;
+      }
+
+      .contact-desc {
+        font-size: 14px;
+        margin-bottom: 24px;
+      }
+
+      .direct-detail-item {
+        min-width: 0;
+        align-items: flex-start;
+      }
+
+      .detail-text-col {
+        min-width: 0;
+      }
+
+      .detail-val {
+        font-size: 14px;
+        overflow-wrap: anywhere;
+      }
+
+      .status-badge-box {
+        align-items: flex-start;
+        padding: 12px;
+      }
+
+      .form-row {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+      }
+
+      .form-input,
+      .form-select {
+        min-height: 48px;
+        font-size: 16px;
+      }
+
+      .form-textarea {
+        min-height: 140px;
+        font-size: 16px;
+      }
+
+      .btn-submit-form {
+        min-height: 50px;
+        padding: 12px;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .contact-navbar {
+        padding-right: 12px;
+        padding-left: 12px;
+      }
+
+      .contact-navbar .brand-icon {
+        width: 22px;
+        height: 22px;
+      }
+
+      .contact-navbar .brand-name {
+        font-size: 11px;
+        letter-spacing: 0.02em;
+      }
+
+      .contact-navbar .btn-back {
+        padding-right: 9px;
+        padding-left: 9px;
+        font-size: 12px;
+      }
+
+      .contact-main-container {
+        padding-right: 14px;
+        padding-left: 14px;
+      }
+
+      .contact-info-panel,
+      .contact-form-panel {
+        padding: 18px 15px;
+      }
+
+      .contact-heading {
+        font-size: 29px;
+      }
+    }
   </style>
 </head>
 <body class="contact-page-body">
@@ -486,5 +610,6 @@
       }, 1200);
     }
   </script>
+  <script src="heading-reveal.js"></script>
 </body>
 </html>

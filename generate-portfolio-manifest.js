@@ -2,14 +2,24 @@
 
 const fs = require('node:fs');
 const path = require('node:path');
+const crypto = require('node:crypto');
+const { execFileSync } = require('node:child_process');
 
 const root = __dirname;
 const worksDirectory = path.join(root, 'website works ');
 const outputFile = path.join(root, 'portfolio-manifest.js');
 const featuredFile = path.join(root, 'featured.json');
-const supportedExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.mp4', '.webm']);
-const carouselImageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.apng', '.avif', '.bmp', '.svg', '.ico']);
+const supportedExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.avif', '.bmp', '.svg', '.ico', '.heic', '.mp4', '.webm', '.pdf']);
+const carouselImageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp', '.gif', '.apng', '.avif', '.bmp', '.svg', '.ico', '.heic']);
 const selectedWorksDirectoryNames = new Set(['selectedworks', 'frontpage', 'forntpage']);
+const categoryAliases = new Map([
+  ['3d mmodels', '3D Models and Renders'],
+  ['branding', 'Brand Identity : Logo'],
+  ['packaging', 'Packaging Design'],
+  ['posters', 'Posters : Visual Designs'],
+  ['social issue', 'Social Issues']
+]);
+const previewDirectory = path.join(root, 'portfolio-previews');
 
 function sortNames(left, right) {
   return left.localeCompare(right, undefined, { numeric: true, sensitivity: 'base' });
@@ -21,11 +31,58 @@ function toPosixPath(filePath) {
 
 function getMediaEntry(filePath, fileName) {
   const extension = path.extname(fileName).toLowerCase();
-  return {
+  const media = {
     path: toPosixPath(path.relative(root, filePath)),
-    type: ['.mp4', '.webm'].includes(extension) ? 'video' : 'image',
+    type: ['.mp4', '.webm'].includes(extension) ? 'video' : extension === '.pdf' ? 'document' : 'image',
     name: fileName
   };
+
+  if (extension === '.heic') {
+    const digest = hashFile(filePath);
+    const previewPath = path.join(previewDirectory, `${digest}.jpg`);
+    if (!fs.existsSync(previewPath)) {
+      fs.mkdirSync(previewDirectory, { recursive: true });
+      try {
+        execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '82', filePath, '--out', previewPath], { stdio: 'ignore' });
+      } catch (error) {
+        if (error.code === 'ENOENT') {
+          console.warn(`HEIC preview could not be generated because sips is unavailable: ${filePath}`);
+        } else {
+          throw error;
+        }
+      }
+    }
+    if (fs.existsSync(previewPath)) {
+      media.previewPath = toPosixPath(path.relative(root, previewPath));
+    }
+  }
+
+  return media;
+}
+
+function hashFile(filePath) {
+  const hash = crypto.createHash('sha256');
+  const descriptor = fs.openSync(filePath, 'r');
+  const buffer = Buffer.allocUnsafe(1024 * 1024);
+  try {
+    let bytesRead;
+    while ((bytesRead = fs.readSync(descriptor, buffer, 0, buffer.length, null)) > 0) {
+      hash.update(buffer.subarray(0, bytesRead));
+    }
+  } finally {
+    fs.closeSync(descriptor);
+  }
+  return hash.digest('hex');
+}
+
+function uniqueMedia(mediaFiles, seenHashes = new Set()) {
+  return mediaFiles.filter(media => {
+    const absolutePath = path.join(root, media.path);
+    const digest = hashFile(absolutePath);
+    if (seenHashes.has(digest)) return false;
+    seenHashes.add(digest);
+    return true;
+  });
 }
 
 function getMediaFiles(directory, recursive = true, acceptedExtensions = supportedExtensions) {
@@ -55,7 +112,8 @@ function getCover(media) {
     const aIsNamedCover = coverPattern.test(a.name);
     const bIsNamedCover = coverPattern.test(b.name);
     if (aIsNamedCover !== bIsNamedCover) return aIsNamedCover ? -1 : 1;
-    if (a.type !== b.type) return a.type === 'image' ? -1 : 1;
+    const typeOrder = { image: 0, video: 1, document: 2 };
+    if (a.type !== b.type) return typeOrder[a.type] - typeOrder[b.type];
     return sortNames(a.name, b.name);
   })[0] || null;
 }
@@ -159,27 +217,58 @@ function discoverSelectedWorks() {
   };
 }
 
-function discoverCarousel() {
-  return ['Carousel', 'crousel'].flatMap(directoryName => {
+function discoverCarousel(categories, selectedWorks) {
+  const projectByHash = new Map();
+  categories.forEach(category => {
+    category.projects.forEach(project => {
+      project.media.forEach(media => {
+        projectByHash.set(hashFile(path.join(root, media.path)), { project, category: category.name });
+      });
+    });
+  });
+  selectedWorks.projects.forEach(project => {
+    project.media.forEach(media => {
+      const digest = hashFile(path.join(root, media.path));
+      if (!projectByHash.has(digest)) {
+        projectByHash.set(digest, { project, category: project.category });
+      }
+    });
+  });
+
+  const seenAssets = new Set();
+  const projects = new Map();
+  ['crousel', 'Carousel'].forEach(directoryName => {
     const carouselDirectory = path.join(root, directoryName);
-    if (!fs.existsSync(carouselDirectory)) return [];
+    if (!fs.existsSync(carouselDirectory)) return;
 
-    return getMediaFiles(carouselDirectory, true, carouselImageExtensions)
+    getMediaFiles(carouselDirectory, true, carouselImageExtensions)
       .filter(media => media.type === 'image')
-      .map(media => {
-        const parentDirectory = path.dirname(path.join(root, media.path));
-        const relativeCategory = path.relative(carouselDirectory, parentDirectory);
-        const category = relativeCategory ? relativeCategory.split(path.sep).join(' / ') : directoryName;
+      .forEach(media => {
+        const digest = hashFile(path.join(root, media.path));
+        if (seenAssets.has(digest)) return;
+        seenAssets.add(digest);
 
-        return {
-          id: `carousel/${media.path}`,
-          title: getProjectTitle(media.name),
-          category,
-          media: [media],
-          cover: media
-        };
+        const match = projectByHash.get(digest);
+        const id = match ? match.project.id : `carousel/${media.path}`;
+        if (projects.has(id)) return;
+        projects.set(id, match
+          ? {
+              ...match.project,
+              id: match.project.id,
+              category: match.category,
+              cover: media
+            }
+          : {
+              id,
+              title: '',
+              category: 'Selected Work',
+              media: [media],
+              cover: media
+            });
       });
   });
+
+  return [...projects.values()];
 }
 
 function discoverCategories(featuredSelections) {
@@ -189,83 +278,64 @@ function discoverCategories(featuredSelections) {
 
   const categoryDirectories = fs.readdirSync(worksDirectory, { withFileTypes: true })
     .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
-    .sort((a, b) => sortNames(a.name, b.name));
+    .sort((a, b) => {
+      const aIsAlias = categoryAliases.has(a.name.toLowerCase());
+      const bIsAlias = categoryAliases.has(b.name.toLowerCase());
+      return Number(aIsAlias) - Number(bIsAlias) || sortNames(a.name, b.name);
+    });
   const wallSignatureMedia = [
     ...getMediaFiles(path.join(root, 'wall signature')),
     ...getMediaFiles(path.join(root, 'wall signautre reveal'))
   ];
-  const wallSignatureMediaByPath = new Map(wallSignatureMedia.map(media => [media.path, media]));
-
-  let wallSignatureProject = null;
-  const categories = categoryDirectories.map((categoryEntry) => {
+  const categoriesByName = new Map();
+  const seenHashes = new Set();
+  for (const categoryEntry of categoryDirectories) {
+    const categoryName = categoryAliases.get(categoryEntry.name.toLowerCase()) || categoryEntry.name;
+    if (!categoriesByName.has(categoryName)) categoriesByName.set(categoryName, new Map());
+    const projects = categoriesByName.get(categoryName);
     const categoryPath = path.join(worksDirectory, categoryEntry.name);
-    const projectDirectories = fs.readdirSync(categoryPath, { withFileTypes: true })
-      .filter(entry => entry.isDirectory() && !entry.name.startsWith('.'))
+    const entries = fs.readdirSync(categoryPath, { withFileTypes: true })
+      .filter(entry => !entry.name.startsWith('.'))
       .sort((a, b) => sortNames(a.name, b.name));
 
-    const projects = [];
-    const addProject = (projectId, folder, title, media, pageUrl = null) => {
-      if (media.length === 0 && !pageUrl) return null;
-      projects.push({
-        id: projectId,
-        folder: toPosixPath(folder),
-        title,
-        media,
-        cover: getCover(media),
-        ...(pageUrl ? { pageUrl } : {})
-      });
-      return projects[projects.length - 1];
-    };
+    for (const entry of entries) {
+      const entryPath = path.join(categoryPath, entry.name);
+      if (entry.isFile() && supportedExtensions.has(path.extname(entry.name).toLowerCase())) {
+        const key = `file:${entry.name.trim().toLowerCase()}`;
+        if (!projects.has(key)) {
+          projects.set(key, {
+            id: `${categoryName}/${entry.name}`,
+            folder: entry.name,
+            title: getProjectTitle(entry.name),
+            media: []
+          });
+        }
+        projects.get(key).media.push(...uniqueMedia([getMediaEntry(entryPath, entry.name)], seenHashes));
+      } else if (entry.isDirectory()) {
+        const media = uniqueMedia(getMediaFiles(entryPath), seenHashes);
+        if (media.length === 0) continue;
 
-    const directEntries = fs.readdirSync(categoryPath, { withFileTypes: true })
-      .filter(entry => entry.isFile() && supportedExtensions.has(path.extname(entry.name).toLowerCase()))
-      .sort((a, b) => sortNames(a.name, b.name));
-
-    for (const mediaEntry of directEntries) {
-      const filePath = path.join(categoryPath, mediaEntry.name);
-      const media = [{
-        path: toPosixPath(path.relative(root, filePath)),
-        type: ['.mp4', '.webm'].includes(path.extname(mediaEntry.name).toLowerCase()) ? 'video' : 'image',
-        name: mediaEntry.name
-      }];
-      addProject(
-        `${categoryEntry.name}/${mediaEntry.name}`,
-        mediaEntry.name,
-        getProjectTitle(mediaEntry.name),
-        media
-      );
-    }
-
-    for (const projectEntry of projectDirectories) {
-      const projectPath = path.join(categoryPath, projectEntry.name);
-      if (projectEntry.name.trim().toLowerCase() === 'wall signature') {
-        wallSignatureProject = {
-          id: 'WALL SIGNATURE',
-          folder: projectEntry.name,
-          title: 'WALL SIGNATURE',
-          media: [...new Map([
-            ...getMediaFiles(projectPath),
-            ...wallSignatureMedia
-          ].map(media => [media.path, media])).values()],
-          ...(fs.existsSync(path.join(root, 'wall-signature.html')) ? { pageUrl: 'wall-signature.html' } : {})
-        };
-        wallSignatureProject.cover = getCover(wallSignatureProject.media);
-        if (wallSignatureProject.media.length > 0) delete wallSignatureProject.pageUrl;
-        continue;
+        const title = entry.name.trim();
+        const key = `folder:${title.toLowerCase()}`;
+        if (!projects.has(key)) {
+          projects.set(key, {
+            id: `${categoryName}/${title}`,
+            folder: entry.name.trim(),
+            title,
+            media: []
+          });
+        }
+        projects.get(key).media.push(...media);
       }
-
-      const media = getMediaFiles(projectPath);
-      addProject(
-        `${categoryEntry.name}/${toPosixPath(projectEntry.name)}`,
-        projectEntry.name,
-        projectEntry.name,
-        media
-      );
     }
+  }
 
-    projects.sort((a, b) => sortNames(a.title, b.title));
-
-    const requestedFolder = featuredSelections[categoryEntry.name];
+  const categories = [...categoriesByName.entries()].map(([name, projectMap]) => {
+    const projects = [...projectMap.values()]
+      .filter(project => project.media.length > 0)
+      .map(project => ({ ...project, cover: getCover(project.media) }))
+      .sort((a, b) => sortNames(a.title, b.title));
+    const requestedFolder = featuredSelections[name];
     const requestedProject = requestedFolder === undefined
       ? null
       : projects.find(project =>
@@ -273,35 +343,27 @@ function discoverCategories(featuredSelections) {
           project.id === requestedFolder ||
           project.media.some(media => media.name === requestedFolder || media.path === requestedFolder)
         );
-
     if (requestedFolder !== undefined && !requestedProject) {
-      console.warn(`Featured project "${requestedFolder}" was not found in "${categoryEntry.name}"; using the first valid project.`);
+      console.warn(`Featured project "${requestedFolder}" was not found in "${name}"; using the first valid project.`);
     }
-
-    const category = {
-      id: categoryEntry.name,
-      name: categoryEntry.name,
+    return {
+      id: name,
+      name,
       projects,
       featuredProjectId: (requestedProject || projects[0] || {}).id || null
     };
-
-    return category;
   });
 
-  if (!wallSignatureProject && (wallSignatureMediaByPath.size > 0 || fs.existsSync(path.join(root, 'wall-signature.html')))) {
-    wallSignatureProject = {
+  const uniqueWallSignatureMedia = uniqueMedia(wallSignatureMedia);
+  if (uniqueWallSignatureMedia.length > 0 || fs.existsSync(path.join(root, 'wall-signature.html'))) {
+    const wallSignatureProject = {
       id: 'WALL SIGNATURE',
       folder: 'wall signature',
       title: 'WALL SIGNATURE',
-      media: [...wallSignatureMediaByPath.values()],
-      cover: getCover([...wallSignatureMediaByPath.values()]),
-      ...(wallSignatureMediaByPath.size === 0 ? { pageUrl: 'wall-signature.html' } : {})
+      media: uniqueWallSignatureMedia,
+      cover: getCover(uniqueWallSignatureMedia),
+      ...(uniqueWallSignatureMedia.length === 0 ? { pageUrl: 'wall-signature.html' } : {})
     };
-  }
-
-  if (wallSignatureProject) {
-    wallSignatureProject.cover = getCover(wallSignatureProject.media);
-    if (wallSignatureProject.media.length > 0) delete wallSignatureProject.pageUrl;
     categories.push({
       id: 'WALL SIGNATURE',
       name: 'WALL SIGNATURE',
@@ -313,10 +375,19 @@ function discoverCategories(featuredSelections) {
   return categories;
 }
 
+function discoverContinuityVideos() {
+  const directory = path.join(root, 'wall signautre continiuty');
+  if (!fs.existsSync(directory)) return [];
+  return getMediaFiles(directory).filter(media => media.type === 'video');
+}
+
+const categories = discoverCategories(readFeaturedSelections());
+const selectedWorks = discoverSelectedWorks();
 const manifest = {
-  categories: discoverCategories(readFeaturedSelections()),
-  selectedWorks: discoverSelectedWorks(),
-  carousel: discoverCarousel()
+  categories,
+  selectedWorks,
+  carousel: discoverCarousel(categories, selectedWorks),
+  continuityVideos: discoverContinuityVideos()
 };
 
 fs.writeFileSync(outputFile, `window.PORTFOLIO_MANIFEST = ${JSON.stringify(manifest, null, 2)};\n`);
@@ -326,4 +397,4 @@ const mediaCount = manifest.categories.reduce(
   (total, category) => total + category.projects.reduce((projectTotal, project) => projectTotal + project.media.length, 0),
   0
 );
-console.log(`Generated ${path.basename(outputFile)}: ${manifest.categories.length} categories, ${projectCount} projects, ${mediaCount} media files.`);
+console.log(`Generated ${path.basename(outputFile)}: ${manifest.categories.length} categories, ${projectCount} projects, ${mediaCount} media files, ${manifest.continuityVideos.length} continuity videos.`);
