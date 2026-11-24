@@ -9,6 +9,7 @@
   const frameCount = 576;
   const maxCachedFrames = 9;
   const maxConcurrentLoads = 3;
+  const maxCanvasPixelRatio = 1.25;
   const frames = new Map();
   const pendingImages = new Map();
   const queuedFrames = new Set();
@@ -25,6 +26,25 @@
 
   function updateScrollMetrics() {
     scrollableDistance = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  }
+
+  function resizeCanvas() {
+    const bounds = canvas.getBoundingClientRect();
+    const pixelRatio = Math.min(
+      window.devicePixelRatio || 1,
+      maxCanvasPixelRatio,
+      1280 / bounds.width,
+      720 / bounds.height
+    );
+    const width = Math.max(1, Math.round(bounds.width * pixelRatio));
+    const height = Math.max(1, Math.round(bounds.height * pixelRatio));
+
+    if (canvas.width === width && canvas.height === height) return;
+    canvas.width = width;
+    canvas.height = height;
+    canvas.removeAttribute('data-ready');
+    fallback.hidden = false;
+    drawnIndex = -1;
   }
 
   function retainFrame(index, image) {
@@ -90,14 +110,65 @@
 
     frames.delete(index);
     frames.set(index, image);
-    context.drawImage(image, 0, 0, canvas.width, canvas.height);
-    fallback.hidden = true;
+    const sourceRatio = image.naturalWidth / image.naturalHeight;
+    const canvasRatio = canvas.width / canvas.height;
+    let sourceX = 0;
+    let sourceY = 0;
+    let sourceWidth = image.naturalWidth;
+    let sourceHeight = image.naturalHeight;
+
+    if (sourceRatio > canvasRatio) {
+      sourceWidth = image.naturalHeight * canvasRatio;
+      sourceX = (image.naturalWidth - sourceWidth) / 2;
+    }
+
+    if (sourceRatio < canvasRatio) {
+      const scale = Math.min(
+        canvas.width / image.naturalWidth,
+        canvas.height / image.naturalHeight
+      );
+      const destinationWidth = image.naturalWidth * scale;
+      const destinationHeight = image.naturalHeight * scale;
+      context.fillStyle = '#08080b';
+      context.fillRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(
+        image,
+        0, 0, image.naturalWidth, image.naturalHeight,
+        (canvas.width - destinationWidth) / 2,
+        (canvas.height - destinationHeight) / 2,
+        destinationWidth, destinationHeight
+      );
+    } else {
+      context.drawImage(
+        image,
+        sourceX, sourceY, sourceWidth, sourceHeight,
+        0, 0, canvas.width, canvas.height
+      );
+    }
+    if (!fallback.hidden) fallback.hidden = true;
+    if (canvas.dataset.ready !== 'true') canvas.dataset.ready = 'true';
     drawnIndex = index;
     return true;
   }
 
+  function drawClosestFrame(index) {
+    let closestIndex = -1;
+    let closestDistance = Infinity;
+
+    frames.forEach((image, candidate) => {
+      const distance = Math.abs(candidate - index);
+      if (distance < closestDistance) {
+        closestIndex = candidate;
+        closestDistance = distance;
+      }
+    });
+
+    if (closestIndex >= 0 && closestIndex !== drawnIndex) drawFrame(closestIndex);
+  }
+
   function render() {
     animationFrame = 0;
+    resizeCanvas();
     const scrollY = window.scrollY;
     const progress = scrollableDistance > 0
       ? Math.min(1, Math.max(0, scrollY / scrollableDistance))
@@ -108,7 +179,7 @@
 
     previousIndex = index;
     currentIndex = index;
-    if (drawnIndex !== index) drawFrame(index);
+    if (drawnIndex !== index && !drawFrame(index)) drawClosestFrame(index);
     if (frameChanged) requestFrames(index, direction);
   }
 
@@ -118,19 +189,21 @@
 
   function refreshScrollMetrics() {
     updateScrollMetrics();
+    resizeCanvas();
     scheduleRender();
   }
 
-  window.addEventListener('scroll', scheduleRender, { passive: true });
-  window.addEventListener('resize', refreshScrollMetrics, { passive: true });
-
   if ('ResizeObserver' in window) {
     const resizeObserver = new ResizeObserver(refreshScrollMetrics);
+    resizeObserver.observe(canvas.parentElement);
     resizeObserver.observe(document.documentElement);
     resizeObserver.observe(document.body);
   }
 
+  window.addEventListener('scroll', scheduleRender, { passive: true });
+  window.addEventListener('resize', refreshScrollMetrics, { passive: true });
+  window.visualViewport?.addEventListener('resize', refreshScrollMetrics, { passive: true });
+
   updateScrollMetrics();
-  requestFrames(0, 1);
   scheduleRender();
 })();
